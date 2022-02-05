@@ -1,0 +1,58 @@
+/* font-size */
+.fs64 {
+  font-size: 64px;
+}
+
+.fs48 {
+  font-size: 48px;
+}
+
+.fs36 {
+  font-size: 36px;
+}
+
+.fs32 {
+  font-size: 32px;
+}
+
+.fs28 {
+  font-size: 28px;
+}
+
+.fs24 {
+  font-size: 24px;
+}
+
+/* color */
+.textWhite {
+  color: #fff;
+}
+
+.textMain {
+  color: #19b7cd;
+}
+
+.textPrimary {
+  color: #fb7348;
+}
+
+.textExplainBold {
+  color: #424242;
+}
+
+.textExplain {
+  color: #737373;
+}
+
+/* font-weight */
+.fw400 {
+  font-weight: 400;
+}
+
+.fw700 {
+  font-weight: 700;
+}
+
+.fw900 {
+  font-weight: 900;
+}
