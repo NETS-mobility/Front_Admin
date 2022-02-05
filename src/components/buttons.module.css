@@ -1,0 +1,22 @@
+.btnCommon {
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  border-radius: 30;
+}
+
+.btnBlue {
+  background-color: #19b7cd;
+}
+
+.btnOrange {
+  background-color: #fb7348;
+}
+
+.btnDarkGrey {
+  background-color: #737373;
+}
+
+.btnLightGrey {
+  background-color: #c4c4c4;
+}
