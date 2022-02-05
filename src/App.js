@@ -1,11 +1,6 @@
+import Layout from "./layout/layout";
 const App = () => {
-  return (
-    <div className="container">
-      <button type="button" className="btn btn-success">
-        테스트 성공
-      </button>
-    </div>
-  );
+  return <Layout />;
 };
 
 export default App;
