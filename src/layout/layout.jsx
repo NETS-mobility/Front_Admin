@@ -2,7 +2,7 @@ import SideBar from "./sideBar";
 import TopBar from "./topBar";
 import styles from "./layout.module.css";
 
-const Layout = () => {
+const Layout = ({children}) => {
   return (
     <div className={`container-fluid ${styles.wholeLayout}`}>
       <div className="row" style={{ height: "100vh" }}>
@@ -14,7 +14,7 @@ const Layout = () => {
           style={{ backgroundColor: "#f7f7f7", padding: 0 }}
         >
           <TopBar />
-          <h1>Contents는 여기에!</h1>
+          {children}
         </div>
       </div>
     </div>
