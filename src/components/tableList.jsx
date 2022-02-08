@@ -6,7 +6,6 @@ import './tableList.css';
 const TableList = ({title1, title2, title3, title4}) => {
 
     const [checkedList, setCheckedLists] = useState([]);
-    const [checkall, setCheckall] = useState(false);
     /*
     const information에 있는 정보가 출력됨
     column3개로 사용하려면 title4 입력X
@@ -22,8 +21,13 @@ const TableList = ({title1, title2, title3, title4}) => {
     */
 
     const information = [
-        {id: 1, nav: "./login", item1: "Mark", item2: "Otto", item3: "@mdo"},
-        {id: 2, nav: "./", item1: "jacob", item2: "Thornton", item3: "@fat"},
+        {id: 1, nav: "./login", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
+        {id: 2, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
+        {id: 3, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
+        {id: 4, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
+        {id: 5, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
+        {id: 6, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
+        {id: 7, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
     ]; //example
 
     const onCheckedAll = useCallback(
@@ -41,7 +45,6 @@ const TableList = ({title1, title2, title3, title4}) => {
           [information]
     );
       
-        // 개별 체크 클릭 시 발생하는 함수
     const onCheckedElement = useCallback(
           (checked, list) => {
               console.log("checked" , checkedList.length);
@@ -77,6 +80,17 @@ const TableList = ({title1, title2, title3, title4}) => {
             </tr>
             :
              <tr key={index}>
+                 <td>
+                    <div className="tablecheckbigbox">
+                        <input
+                        key={info.id}
+                        type="checkbox"
+                        onChange={(e) => onCheckedElement(e.target.checked, info.id)}
+                        checked={checkedList.includes(info.id) ? true : false}
+                        className="tablecheckbox"
+                        />
+                  </div>
+                </td>
                  <td><Link to={info.nav}><button className="tablebutton">{info.item1}</button></Link></td>
                  <td><Link to={info.nav}><button className="tablebutton">{info.item2}</button></Link></td>
                  <td><Link to={info.nav}><button className="tablebutton">{info.item3}</button></Link></td>
@@ -86,7 +100,7 @@ const TableList = ({title1, title2, title3, title4}) => {
 
     return(
         <div className="tableListStyle">
-        <Table striped bordered hover>
+        <Table bordered hover>
             <thead>
                 {title4 ? 
                 <tr>
@@ -111,7 +125,21 @@ const TableList = ({title1, title2, title3, title4}) => {
                     <th><div className="tableTitle">{title4}</div></th>
                 </tr> :
                 <tr>
-                    <th></th>
+                    <th>
+                        <div className="tablecheckbigbox">
+                            <input type="checkbox"
+                            onChange={(e) => onCheckedAll(e.target.checked)}
+                            checked={
+                                checkedList.length === 0
+                                ? false
+                                : checkedList.length === information.length
+                                ? true
+                                : false
+                            }
+                            className="tablecheckbox"
+                            />
+                        </div>
+                    </th>
                     <th><div className="tableTitle">{title1}</div></th>
                     <th><div className="tableTitle">{title2}</div></th>
                     <th><div className="tableTitle">{title3}</div></th>
@@ -119,7 +147,6 @@ const TableList = ({title1, title2, title3, title4}) => {
                 }
             </thead>
             <tbody>
-                
                 {infoList}
             </tbody>
         </Table>
