@@ -3,7 +3,14 @@ import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import './tableList.css';
 
-const TableList = ({title1, title2, title3, title4}) => {
+/*
+const TableList = ({
+    ischeck : bool (true이면 checkbox사용, false이면 checkbox X)
+    title1~title4 : string
+})
+*/
+
+const TableList = ({ischeck, title1, title2, title3, title4}) => {
 
     const [checkedList, setCheckedLists] = useState([]);
     /*
@@ -28,6 +35,18 @@ const TableList = ({title1, title2, title3, title4}) => {
         {id: 5, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
         {id: 6, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
         {id: 7, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
+        {id: 8, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
+        {id: 9, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
+        {id: 10, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
+        {id: 11, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
+        {id: 12, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
+        {id: 13, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
+        {id: 14, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
+        {id: 15, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
+        {id: 16, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
+        {id: 17, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
+        {id: 18, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
+        {id: 19, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},        
     ]; //example
 
     const onCheckedAll = useCallback(
@@ -62,6 +81,7 @@ const TableList = ({title1, title2, title3, title4}) => {
     const infoList = information.map((info, index) => (
         (title4?
             <tr key={index}>
+                {ischeck?
                 <td>
                     <div className="tablecheckbigbox">
                         <input
@@ -72,7 +92,7 @@ const TableList = ({title1, title2, title3, title4}) => {
                         className="tablecheckbox"
                         />
                   </div>
-                </td>
+                </td>:<></>}
                 <td><Link to={info.nav}><button className="tablebutton">{info.item1}</button></Link></td>
                 <td><Link to={info.nav}><button className="tablebutton">{info.item2}</button></Link></td>
                 <td><Link to={info.nav}><button className="tablebutton">{info.item3}</button></Link></td>
@@ -80,7 +100,8 @@ const TableList = ({title1, title2, title3, title4}) => {
             </tr>
             :
              <tr key={index}>
-                 <td>
+                 {ischeck?
+                <td>
                     <div className="tablecheckbigbox">
                         <input
                         key={info.id}
@@ -90,7 +111,7 @@ const TableList = ({title1, title2, title3, title4}) => {
                         className="tablecheckbox"
                         />
                   </div>
-                </td>
+                </td>:<></>}
                  <td><Link to={info.nav}><button className="tablebutton">{info.item1}</button></Link></td>
                  <td><Link to={info.nav}><button className="tablebutton">{info.item2}</button></Link></td>
                  <td><Link to={info.nav}><button className="tablebutton">{info.item3}</button></Link></td>
@@ -104,6 +125,7 @@ const TableList = ({title1, title2, title3, title4}) => {
             <thead>
                 {title4 ? 
                 <tr>
+                    {ischeck?
                     <th>
                         <div className="tablecheckbigbox">
                             <input type="checkbox"
@@ -118,13 +140,14 @@ const TableList = ({title1, title2, title3, title4}) => {
                             className="tablecheckbox"
                             />
                         </div>
-                    </th>
+                    </th>:<></>}
                     <th><div className="tableTitle">{title1}</div></th>
                     <th><div className="tableTitle">{title2}</div></th>
                     <th><div className="tableTitle">{title3}</div></th>
                     <th><div className="tableTitle">{title4}</div></th>
                 </tr> :
                 <tr>
+                    {ischeck?
                     <th>
                         <div className="tablecheckbigbox">
                             <input type="checkbox"
@@ -139,7 +162,7 @@ const TableList = ({title1, title2, title3, title4}) => {
                             className="tablecheckbox"
                             />
                         </div>
-                    </th>
+                    </th>:<></>}
                     <th><div className="tableTitle">{title1}</div></th>
                     <th><div className="tableTitle">{title2}</div></th>
                     <th><div className="tableTitle">{title3}</div></th>

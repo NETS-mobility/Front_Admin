@@ -15,7 +15,7 @@ const Layout = ({children}) => {
           style={{ backgroundColor: "#f7f7f7", padding: 0 }}
         >
           <TopBar />
-          <TableList title1={"고객 ID"} title2={"고객명"} title3={"회원가입 일자"} />
+          <TableList ischeck={false} title1={"고객 ID"} title2={"고객명"} title3={"회원가입 일자"} />
         </div>
       </div>
     </div>
