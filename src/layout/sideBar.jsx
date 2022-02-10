@@ -22,18 +22,16 @@ const NavItem = ({ bigMenu, smallMenu, open, setOpen, i }) => {
       {open === i ? (
         smallMenu.map((data, index) => {
           return (
-            <Link key={i} to={data.link}>
-              <button type="button" className={styles.smallMenu} key={index}>
-                <span
-                  className={[
-                    typoStyles.fs24,
-                    typoStyles.fw400,
-                    typoStyles.textWhite,
-                  ].join(" ")}
-                >
-                  {data.title}
-                </span>
-              </button>
+            <Link key={index} to={data.link} className={styles.smallMenu}>
+              <span
+                className={[
+                  typoStyles.fs24,
+                  typoStyles.fw400,
+                  typoStyles.textWhite,
+                ].join(" ")}
+              >
+                {data.title}
+              </span>
             </Link>
           );
         })
@@ -89,11 +87,10 @@ const SideBar = () => {
       <NavItem
         bigMenu={"관리"}
         smallMenu={[
-          { title: "회원", link: "/manageMember" },
-          { title: "매니저", link: "/manageManager" },
-          { title: "관리자", link: "/manageAdmin" },
-          { title: "차량", link: "/manageCar" },
-          { title: "차고지", link: "/manageGarage" },
+          { title: "회원", link: "/manage/member/list" },
+          { title: "매니저", link: "/manage/manager/list" },
+          { title: "관리자", link: "/manage/admin/list" },
+          { title: "차량", link: "/manage/car/list" },
         ]}
         open={open}
         setOpen={() => setOpen(4)}
