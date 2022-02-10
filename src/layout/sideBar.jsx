@@ -22,8 +22,7 @@ const NavItem = ({ bigMenu, smallMenu, open, setOpen, i }) => {
       {open === i ? (
         smallMenu.map((data, index) => {
           return (
-            /* <Link key={i} to={data.link}> */
-            <button type="button" className={styles.smallMenu} key={index}>
+            <Link key={index} to={data.link} className={styles.smallMenu}>
               <span
                 className={[
                   typoStyles.fs24,
@@ -33,7 +32,7 @@ const NavItem = ({ bigMenu, smallMenu, open, setOpen, i }) => {
               >
                 {data.title}
               </span>
-            </button>
+            </Link>
           );
         })
       ) : (
@@ -47,9 +46,9 @@ const SideBar = () => {
   const [open, setOpen] = useState(0);
   return (
     <div className={styles.sideBar}>
-      {/* <Link to={"/"}> */}
-      <img src={Logo} alt="NETS 로고" className={styles.logo} />
-      {/* </Link> */}
+      <Link to={"/"}>
+        <img src={Logo} alt="NETS 로고" className={styles.logo} />
+      </Link>
       <strong
         className={[
           typoStyles.fs36,
@@ -88,11 +87,10 @@ const SideBar = () => {
       <NavItem
         bigMenu={"관리"}
         smallMenu={[
-          { title: "회원", link: "/manageMember" },
-          { title: "매니저", link: "/manageManager" },
-          { title: "관리자", link: "/manageAdmin" },
-          { title: "차량", link: "/manageCar" },
-          { title: "차고지", link: "/manageGarage" },
+          { title: "회원", link: "/manage/member/list" },
+          { title: "매니저", link: "/manage/manager/list" },
+          { title: "관리자", link: "/manage/admin/list" },
+          { title: "차량", link: "/manage/car/list" },
         ]}
         open={open}
         setOpen={() => setOpen(4)}
