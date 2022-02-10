@@ -22,18 +22,19 @@ const NavItem = ({ bigMenu, smallMenu, open, setOpen, i }) => {
       {open === i ? (
         smallMenu.map((data, index) => {
           return (
-            /* <Link key={i} to={data.link}> */
-            <button type="button" className={styles.smallMenu} key={index}>
-              <span
-                className={[
-                  typoStyles.fs24,
-                  typoStyles.fw400,
-                  typoStyles.textWhite,
-                ].join(" ")}
-              >
-                {data.title}
-              </span>
-            </button>
+            <Link key={i} to={data.link}>
+              <button type="button" className={styles.smallMenu} key={index}>
+                <span
+                  className={[
+                    typoStyles.fs24,
+                    typoStyles.fw400,
+                    typoStyles.textWhite,
+                  ].join(" ")}
+                >
+                  {data.title}
+                </span>
+              </button>
+            </Link>
           );
         })
       ) : (
@@ -47,9 +48,9 @@ const SideBar = () => {
   const [open, setOpen] = useState(0);
   return (
     <div className={styles.sideBar}>
-      {/* <Link to={"/"}> */}
-      <img src={Logo} alt="NETS 로고" className={styles.logo} />
-      {/* </Link> */}
+      <Link to={"/"}>
+        <img src={Logo} alt="NETS 로고" className={styles.logo} />
+      </Link>
       <strong
         className={[
           typoStyles.fs36,
