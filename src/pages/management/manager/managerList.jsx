@@ -4,6 +4,7 @@ import styles from "../management.module.css";
 import typoStyles from "../../../assets/fonts/typography.module.css";
 import CustomBtn from "../../../components/buttons";
 import btnStyles from "../../../components/buttons.module.css";
+import info from "../info3.json";
 const ManagerList = () => {
   return (
     <Layout>
@@ -23,6 +24,8 @@ const ManagerList = () => {
           title1={"매니저 ID"}
           title2={"매니저명"}
           title3={"등록 일자"}
+          info={info.information}
+          baseURL={"/manager/detail"}
         />
         <div className={styles.btnSection}>
           <CustomBtn
