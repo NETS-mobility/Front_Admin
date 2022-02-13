@@ -4,6 +4,7 @@ import btnStyles from "../../../components/buttons.module.css";
 import typoStyles from "../../../assets/fonts/typography.module.css";
 import TableList from "../../../components/tableList";
 import styles from "../management.module.css";
+import info from "../info3.json";
 const CarList = () => {
   return (
     <Layout>
@@ -19,11 +20,13 @@ const CarList = () => {
       </h1>
       <section className={styles.manageContentSection}>
         <TableList
-          ischeck={true}
+          ischeck={false}
           title1={"차량 번호"}
           title2={"운전자"}
           title3={"등록 일자"}
           title4={"보험 만기 일자"}
+          info={info.information}
+          baseURL={"/car/detail"}
         />
         <div className={styles.btnSection}>
           <CustomBtn
