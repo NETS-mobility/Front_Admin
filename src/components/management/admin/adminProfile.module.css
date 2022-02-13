@@ -1,0 +1,21 @@
+.adminProfileSection {
+  width: 566px;
+  height: 721px;
+  padding: 128px 68px 68px;
+  background-color: #fff;
+}
+
+.adminProfileSection .profileImg {
+  width: 183px;
+  height: 183px;
+  border-radius: 50%;
+  margin-bottom: 25px;
+}
+
+.adminProfileSection .adminInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 56px;
+}
