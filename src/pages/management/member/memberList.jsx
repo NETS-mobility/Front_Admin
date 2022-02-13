@@ -2,6 +2,7 @@ import Layout from "../../../layout/layout";
 import TableList from "../../../components/tableList";
 import styles from "../management.module.css";
 import typoStyles from "../../../assets/fonts/typography.module.css";
+import info from "../info3.json";
 const MemberList = () => {
   return (
     <Layout>
@@ -21,6 +22,8 @@ const MemberList = () => {
           title1={"고객 ID"}
           title2={"고객명"}
           title3={"회원가입 일자"}
+          info={info.information}
+          baseURL={"/member/detail"}
         />
       </section>
     </Layout>
