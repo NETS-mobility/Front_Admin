@@ -1,0 +1,38 @@
+.logintop {
+  background: #737373;
+  width: 100%;
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginlogo {
+  width: 465px;
+  height: 247px;
+}
+
+.loginwelcom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 65px;
+}
+
+.logininputbigbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 23px;
+}
+
+.login-enterbtn {
+  width: 465px;
+  height: 80px;
+  background: #737373;
+  font-size: 48px;
+  font-weight: 200;
+  margin-top: 65px;
+}

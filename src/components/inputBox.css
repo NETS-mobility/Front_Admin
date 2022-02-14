@@ -1,0 +1,19 @@
+.inputboxstyle {
+  width: 465px;
+  height: 89px;
+  background: white;
+  border: 0;
+  border-bottom: 5px solid #737373;
+  outline: none;
+  font-size: 32px;
+  color: #000;
+}
+
+.inputboxstyle:focus-visible {
+  border-bottom: 5px solid #19b7cd;
+}
+
+.inputboxstyle::placeholder {
+  font-size: 32px;
+  color: #dad8e0;
+}
