@@ -17,12 +17,12 @@
 }
 
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 2px;
-  background: #000;
+  border-radius: 30px;
+  background: #737373;
 }
 
 .tablecheckbigbox {
