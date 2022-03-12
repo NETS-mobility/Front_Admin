@@ -5,6 +5,7 @@
 }
 
 .wholeLayout .layoutChildren {
+  height: 95vh;
   padding: 18px;
   background-color: #f7f7f7;
 }

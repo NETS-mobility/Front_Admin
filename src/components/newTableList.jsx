@@ -1,21 +1,14 @@
-import React, { useCallback, useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import "./tableList.css";
-const TableLineWithLink = ({ url, content }) => {
+const TableLine = ({ url, content }) => {
+  let navigate = useNavigate();
   return (
     <td>
-      <Link to={url}>
-        <button className="tablebutton">{content}</button>
-      </Link>
-    </td>
-  );
-};
-
-const TableLineWithOutLink = ({ content }) => {
-  return (
-    <td>
-      <button className="tablebutton">{content}</button>
+      <button className="tablebutton" onClick={() => url && navigate(url)}>
+        {content}
+      </button>
     </td>
   );
 };
@@ -28,28 +21,14 @@ const TableTitle = ({ title }) => {
   );
 };
 
-// const CheckAllForTable = () => {
-//   return (
-//     <th>
-//       <div className="tablecheckbigbox">
-//         <input
-//           type="checkbox"
-//           onChange={(e) => onCheckedAll(e.target.checked)}
-//           checked={
-//             checkedList.length === 0
-//               ? false
-//               : checkedList.length === info.length
-//               ? true
-//               : false
-//           }
-//           className="tablecheckbox"
-//         />
-//       </div>
-//     </th>
-//   );
-// };
-
-const NewTableList = ({ needCheck, titles, props, datas, baseURL }) => {
+const NewTableList = ({
+  needCheck,
+  titles,
+  props,
+  datas,
+  baseURL,
+  detailProp,
+}) => {
   return (
     <div className="tableListStyle">
       <Table bordered hover>
@@ -63,13 +42,11 @@ const NewTableList = ({ needCheck, titles, props, datas, baseURL }) => {
 
         <tbody>
           {datas.map((data, i) => {
-            const url = `${baseURL}/${data.num}`;
+            const url = `${baseURL}/${data[detailProp]}`;
             return (
               <tr key={i}>
                 {props.map((prop, i) => {
-                  return (
-                    <TableLineWithLink key={i} url={url} content={data[prop]} />
-                  );
+                  return <TableLine key={i} url={url} content={data[prop]} />;
                 })}
               </tr>
             );
