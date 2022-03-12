@@ -4,8 +4,20 @@ import styles from "../management.module.css";
 import typoStyles from "../../../assets/fonts/typography.module.css";
 import CustomBtn from "../../../components/buttons";
 import btnStyles from "../../../components/buttons.module.css";
-import info from "../info3.json";
+import { useEffect, useState } from "react";
+import { GetAdminList } from "../../../api/management/admin";
+import SplitDate from "../../../util/splitDate";
+import NewTableList from "../../../components/newTableList";
+
 const AdminList = () => {
+  const [list, setList] = useState([]);
+  useEffect(async () => {
+    const res = await GetAdminList();
+    res.forEach((data) => {
+      setList((list) => [...list, { ...data, date: SplitDate(data.date) }]);
+    });
+  }, []);
+
   return (
     <Layout>
       <h1
@@ -19,28 +31,19 @@ const AdminList = () => {
         관리자 관리
       </h1>
       <section className={styles.manageContentSection}>
-        <TableList
-          ischeck={true}
-          title1={"관리자 ID"}
-          title2={"관리자명"}
-          title3={"등록 일자"}
-          info={info.information}
-          baseURL={"/admin/detail"}
+        <NewTableList
+          needCheck={false}
+          titles={["관리자 ID", "관리자명", "등록 일자"]}
+          props={["number", "manager_name", "date", "date2"]}
+          datas={list}
+          baseURL={"/car/detail"}
+          detailProp={"id"}
         />
-        <div className={styles.btnSection}>
-          <CustomBtn
-            styleForBtn={[btnStyles.btnLightGrey, styles.managementBtn].join(
-              " "
-            )}
-            styleForText={typoStyles.fs36}
-            text={"선택 항목 삭제"}
-          />
-          <CustomBtn
-            styleForBtn={[btnStyles.btnBlue, styles.managementBtn].join(" ")}
-            styleForText={typoStyles.fs36}
-            text={"추가 등록"}
-          />
-        </div>
+        <CustomBtn
+          styleForBtn={[btnStyles.btnBlue, styles.managementBtn].join(" ")}
+          styleForText={typoStyles.fs36}
+          text={"추가 등록"}
+        />
       </section>
     </Layout>
   );
