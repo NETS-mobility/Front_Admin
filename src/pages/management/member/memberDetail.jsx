@@ -4,9 +4,16 @@ import typoStyles from "../../../assets/fonts/typography.module.css";
 import { useParams } from "react-router-dom";
 import ServiceHistoryBlock from "../../../components/management/member/serviceHistoryBlock";
 import MemberInfoLine from "../../../components/management/member/memberInfoLine";
+import { useEffect, useState } from "react";
+import { GetMemberDetail } from "../../../api/management/member";
+import SplitDate from "../../../util/splitDate";
 
 const MemberDetail = () => {
   const param = useParams();
+  const [member, setMember] = useState([]);
+  useEffect(async () => {
+    setMember(await GetMemberDetail(param.id));
+  }, []);
   //axios 사용할 때 param.id를 이용!
 
   return (
@@ -32,10 +39,10 @@ const MemberDetail = () => {
         회원 정보
       </h1>
       <section className={styles.memberInfoSection}>
-        <MemberInfoLine title={"고객명"} value={"김하나"} />
-        <MemberInfoLine title={"가입일자"} value={"2021.11.05"} />
-        <MemberInfoLine title={"이메일"} value={"email@email.com"} />
-        <MemberInfoLine title={"휴대전화"} value={"010-1111-0000"} />
+        <MemberInfoLine title={"고객명"} value={member.name} />
+        <MemberInfoLine title={"가입일자"} value={SplitDate(member.date)} />
+        <MemberInfoLine title={"이메일"} value={member.id} />
+        <MemberInfoLine title={"휴대전화"} value={member.phone} />
       </section>
 
       <h1
