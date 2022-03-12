@@ -14,7 +14,6 @@ const MemberDetail = () => {
   useEffect(async () => {
     setMember(await GetMemberDetail(param.id));
   }, []);
-  //axios 사용할 때 param.id를 이용!
 
   return (
     <Layout>
@@ -61,7 +60,6 @@ const MemberDetail = () => {
         <ServiceHistoryBlock />
         <ServiceHistoryBlock />
       </section>
-      {/* <section className={styles.manageContentSection}></section> */}
     </Layout>
   );
 };

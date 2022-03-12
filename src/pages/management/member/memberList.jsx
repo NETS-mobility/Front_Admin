@@ -33,6 +33,7 @@ const MemberList = () => {
           props={["name", "id", "date"]}
           datas={list}
           baseURL={"/member/detail"}
+          detailProp={"num"}
         />
       </section>
     </Layout>
