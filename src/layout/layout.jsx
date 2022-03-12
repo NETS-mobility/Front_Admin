@@ -1,7 +1,6 @@
 import SideBar from "./sideBar";
 import TopBar from "./topBar";
 import styles from "./layout.module.css";
-import TableList from "../components/tableList";
 
 const Layout = ({ children }) => {
   return (

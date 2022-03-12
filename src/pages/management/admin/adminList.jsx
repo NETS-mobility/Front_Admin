@@ -1,5 +1,4 @@
 import Layout from "../../../layout/layout";
-import TableList from "../../../components/tableList";
 import styles from "../management.module.css";
 import typoStyles from "../../../assets/fonts/typography.module.css";
 import CustomBtn from "../../../components/buttons";
