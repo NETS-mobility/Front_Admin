@@ -1,0 +1,14 @@
+.reservationinfo-text {
+  font-size: 21px;
+  font-weight: 400;
+  color: #737373;
+}
+.reservationinfo-all {
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+  margin-right: 300px;
+}
+.reservationinfo-left {
+  margin-right: 40px;
+}
