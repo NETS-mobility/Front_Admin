@@ -1,0 +1,39 @@
+.reservation-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #737373;
+}
+
+.reservation-tablelist {
+  width: 100%;
+  height: 83vh;
+  align-items: center;
+  background-color: white;
+}
+
+.reservation-bottom {
+  display: flex;
+  justify-content: center;
+  width: 98%;
+}
+
+.reservation-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 95%;
+}
+
+.reservation-topright {
+  display: flex;
+  width: 470px;
+  align-items: center;
+}
+
+.reservation-all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
