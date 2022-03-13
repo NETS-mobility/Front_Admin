@@ -1,0 +1,11 @@
+.memberInfoLine {
+  display: flex;
+}
+
+.memberInfoLine .title {
+  width: 40%;
+}
+
+.memberInfoLine .value {
+  width: 55%;
+}
