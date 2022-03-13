@@ -1,9 +1,10 @@
+import axios from "axios";
 import React, { useEffect, useRef, useState, memo } from "react";
 import Editor from "../../components/editor";
 import Layout from "../../layout/layout";
-import "./editorContainer.css";
+import "./managerNoticeWrite.css";
 
-const EditorContainer = memo(({ api, user }) => {
+const ManagerNoticeWrite = memo(() => {
   const [htmlContent, setHtmlContent] = useState("");
   const [title, setTitle] = useState("");
   const quillRef = useRef();
@@ -13,6 +14,27 @@ const EditorContainer = memo(({ api, user }) => {
     if (description.trim() === "") {
       alert("내용을 입력해주세요.");
       return;
+    } else {
+      axios
+        .post("http://localhost:5000/admin/board/manager/write", {
+          title: title,
+          writer_id: 2,
+          content: htmlContent,
+        })
+        .then((response) => {
+          console.log("response: ", response);
+          // const accessToken = response.data.jwtToken;
+          // localStorage.setItem("accessToken", accessToken);
+          // if (accessToken) {
+          //   navigate("/");
+          // }
+          // // if (response.status == 200) {
+          // //   navigate("/");
+          // // }
+        })
+        .catch(function (error) {
+          console.log("error: ", error);
+        });
     }
   };
   const changeValue = (e) => {
@@ -39,7 +61,6 @@ const EditorContainer = memo(({ api, user }) => {
               quillRef={quillRef}
               htmlContent={htmlContent}
               setHtmlContent={setHtmlContent}
-              api={api}
             />
             <button className="editorSubmitBtn" onClick={handleSubmit}>
               작성 완료
@@ -50,4 +71,4 @@ const EditorContainer = memo(({ api, user }) => {
     </Layout>
   );
 });
-export default EditorContainer;
+export default ManagerNoticeWrite;
