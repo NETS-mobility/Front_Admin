@@ -1,5 +1,12 @@
 import Layout from "./layout/layout";
 import Modal from "react-modal/lib/components/Modal";
+import Login from "./pages/login/login";
+import ReservationList from "./pages/reservation/reservationList";
+import ReservationDetail from "./pages/reservation/reservationDetail";
+import ChangePW from "./pages/login/changePW";
+import EditorContainer from "./pages/board/editorContainer";
+import ServiceStat from "./pages/statistics/serviceStat";
+import AdminRegister from "./pages/admin/adminRegister";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./pages/login/login";
 import ReservationList from "./pages/reservation/reservationList";
@@ -75,6 +82,7 @@ const App = () => {
 
         <Route path="/setFee" element={<CurrentPay />} />
         <Route path="/editFee" element={<EditPay />} />
+        {/* <Route path="/admin/detail/edit/:id" element={<AdminDetailEdit />} /> */}
       </Routes>
     </Router>
   );

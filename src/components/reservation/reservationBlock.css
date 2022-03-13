@@ -1,0 +1,121 @@
+.reservationblock-square {
+  width: 470px;
+  height: 369px;
+  background: #ffffff;
+}
+.reservationblock-set {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+}
+.reservationblock-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+.reservationblock-profile {
+  width: 140px;
+  height: 140px;
+  background-color: #c4c4c4;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+.reservationblock-name {
+  font-size: 28px;
+  font-weight: 400;
+  color: #737373;
+}
+.reservationblock-button {
+  display: flex;
+  width: 278px;
+  height: 57px;
+  background: #19b7cd;
+  border-radius: 30px;
+  font-size: 28px;
+  font-weight: 400;
+  color: #ffffff;
+  border: 0px;
+  align-items: center;
+  justify-content: center;
+}
+.reservationblock-changebtn {
+  display: flex;
+  width: 109px;
+  height: 32px;
+  background: #19b7cd;
+  border-radius: 30px;
+  font-size: 24px;
+  font-weight: 400;
+  color: #ffffff;
+  border: 0px;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+.reservationblock-nonebtn {
+  display: flex;
+  width: 109px;
+  height: 32px;
+  background: #ffffff;
+  border-radius: 30px;
+  font-size: 24px;
+  font-weight: 400;
+  color: #ffffff;
+  border: 0px;
+  margin: 10px;
+}
+.reservationblock-modalall {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.reservationblock-modaltitle {
+  font-size: 36px;
+  font-weight: 700;
+  color: #737373;
+  margin-bottom: 80px;
+}
+.reservationblock-modallist {
+  width: 100%;
+  height: 560px;
+  overflow-y: auto;
+  margin-bottom: 60px;
+}
+.reservationblock-modalbtn {
+  width: 278px;
+  height: 57px;
+  background: #19b7cd;
+  border-radius: 30px;
+  border: 0px;
+  font-size: 25px;
+  color: #ffffff;
+}
+
+.modalline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 80px;
+  border-bottom: 1px solid #dad8e0;
+  border-top: 1px solid #dad8e0;
+}
+.modalline-name {
+  font-size: 36px;
+  font-weight: 700;
+  color: black;
+  margin-left: 10px;
+}
+.modalline-detail {
+  width: 180px;
+  height: 50px;
+  background: #19b7cd;
+  border-radius: 30px;
+  font-size: 25px;
+  color: #ffffff;
+  align-items: center;
+  border: 0px;
+  margin-right: 10px;
+}
