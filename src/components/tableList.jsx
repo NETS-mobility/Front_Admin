@@ -6,48 +6,23 @@ import './tableList.css';
 /*
 const TableList = ({
     ischeck : bool (true이면 checkbox사용, false이면 checkbox X)
-    title1~title4 : string
-})
-*/
-
-const TableList = ({ischeck, title1, title2, title3, title4}) => {
-
-    const [checkedList, setCheckedLists] = useState([]);
-    /*
-    const information에 있는 정보가 출력됨
-    column3개로 사용하려면 title4 입력X
-
-    const information = [
+    infoList : [{
         id: 순서,
         nav: "이동할 페이지 주소",
         item1: "title1의 내용"
         item2: "title2의 내용",
         item3: "title3의 내용",
         item4: "title4의 내용"
-    ]
-    */
+    },]
+    (infoList 에 있는 정보가 출력됨)
 
-    const information = [
-        {id: 1, nav: "./login", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
-        {id: 2, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
-        {id: 3, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
-        {id: 4, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
-        {id: 5, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
-        {id: 6, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
-        {id: 7, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
-        {id: 8, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
-        {id: 9, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
-        {id: 10, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
-        {id: 11, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
-        {id: 12, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
-        {id: 13, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
-        {id: 14, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
-        {id: 15, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
-        {id: 16, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
-        {id: 17, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
-        {id: 18, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},
-        {id: 19, nav: "./", item1: "zoowb", item2: "최지우", item3: "2022-02-08"},        
-    ]; //example
+    title1~title4 : string (column3개로 사용하려면 title4 입력 X )
+})
+*/
+
+const TableList = ({ischeck, information, title1, title2, title3, title4}) => {
+
+    const [checkedList, setCheckedLists] = useState([]);
 
     const onCheckedAll = useCallback(
         (checked)=>{
@@ -66,8 +41,6 @@ const TableList = ({ischeck, title1, title2, title3, title4}) => {
       
     const onCheckedElement = useCallback(
           (checked, list) => {
-              console.log("checked" , checkedList.length);
-              console.log("info", information.length);
             if (checked) {
               setCheckedLists([...checkedList, list]);
             } else {

@@ -17,3 +17,17 @@
   font-size: 32px;
   color: #dad8e0;
 }
+
+.inputboxtitle {
+  font-size: 32px;
+  color: #737373;
+  font-weight: 700;
+  margin-right: 30px;
+}
+
+.inputboxwithtitlestyle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 800px;
+}
