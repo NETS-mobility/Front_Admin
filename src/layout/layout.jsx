@@ -1,7 +1,6 @@
 import SideBar from "./sideBar";
 import TopBar from "./topBar";
 import styles from "./layout.module.css";
-import TableList from "../components/tableList";
 
 const Layout = ({ children }) => {
   return (
@@ -15,7 +14,7 @@ const Layout = ({ children }) => {
           style={{ backgroundColor: "#f7f7f7", padding: 0 }}
         >
           <TopBar />
-          <div className={styles.wholeLayoutbackground}>{children}</div>
+          <div className={styles.layoutChildren}>{children}</div>
         </div>
       </div>
     </div>
