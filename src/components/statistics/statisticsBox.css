@@ -1,0 +1,43 @@
+.stat-box {
+  width: 400px;
+  height: 238px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-box-title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  text-align: center;
+  color: #737373;
+}
+
+.stat-box-contents {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  text-align: center;
+  color: #19b7cd;
+}
+
+.stat-box-long {
+  width: 740px;
+  height: 238px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-box-contents-two {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 46px;
+  text-align: center;
+  color: #19b7cd;
+}
