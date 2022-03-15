@@ -1,9 +1,19 @@
 import Layout from "../../../layout/layout";
-import TableList from "../../../components/tableList";
+import NewTableList from "../../../components/newTableList";
 import styles from "../management.module.css";
 import typoStyles from "../../../assets/fonts/typography.module.css";
-import info from "../info3.json";
+import { GetMemberList } from "../../../api/management/member";
+import { useEffect, useState } from "react";
+import SplitDate from "../../../util/splitDate";
 const MemberList = () => {
+  const [list, setList] = useState([]);
+  useEffect(async () => {
+    const res = await GetMemberList();
+    res.forEach((data) => {
+      setList((list) => [...list, { ...data, date: SplitDate(data.date) }]);
+    });
+  }, []);
+
   return (
     <Layout>
       <h1
@@ -17,13 +27,13 @@ const MemberList = () => {
         회원 관리
       </h1>
       <section className={styles.manageContentSection}>
-        <TableList
-          ischeck={false}
-          title1={"고객 ID"}
-          title2={"고객명"}
-          title3={"회원가입 일자"}
-          info={info.information}
+        <NewTableList
+          needCheck={false}
+          titles={["고객 ID", "고객명", "회원가입 일자"]}
+          props={["name", "id", "date"]}
+          datas={list}
           baseURL={"/member/detail"}
+          detailProp={"num"}
         />
       </section>
     </Layout>

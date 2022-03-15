@@ -1,0 +1,40 @@
+.title {
+  width: 95%;
+  margin: 0 auto 10px;
+}
+
+.managerRegisterContent,
+.managerRegisterComplete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  height: 90%;
+  background-color: #fff;
+  padding: 30px 50px;
+  margin: 0 auto;
+}
+
+.managerRegisterContent .errText {
+  margin: 40px auto 0;
+}
+
+.managerRegisterContent .registerBtn {
+  display: flex;
+  width: 343px;
+  height: 79px;
+  margin: 40px auto 0;
+}
+
+.managerRegisterComplete .completeText {
+  text-align: center;
+  font-size: 48px;
+}
+
+.managerRegisterComplete .gotoCarBtn {
+  display: flex;
+  width: 400px;
+  height: 100px;
+  margin: 80px auto 0;
+}

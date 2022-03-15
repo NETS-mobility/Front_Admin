@@ -1,0 +1,63 @@
+.title {
+  width: 95%;
+  margin: 0 auto 10px;
+}
+
+.carRegisterContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  height: 90%;
+  background-color: #fff;
+  padding: 30px 50px;
+  margin: 0 auto;
+}
+
+.carRegisterContent .errText {
+  margin: 40px auto 0;
+}
+
+.carRegisterContent .registerBtn {
+  display: flex;
+  width: 343px;
+  height: 79px;
+  margin: 40px auto 0;
+}
+
+.carRegisterContent .selectBox,
+.carRegisterContent .addrInput {
+  width: 465px;
+  height: 89px;
+  background-color: #fff;
+  border: 0;
+  border-bottom: 5px solid #737373;
+  outline: none;
+  font-size: 32px;
+  color: #000;
+}
+
+.carRegisterContent .addrInput {
+  display: flex;
+  justify-content: start;
+  align-items: flex-end;
+  height: 200px;
+}
+
+.carRegisterContent .background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(115, 115, 115, 0.61);
+}
+
+.carRegisterContent .background .addrBlock {
+  width: 800px;
+}

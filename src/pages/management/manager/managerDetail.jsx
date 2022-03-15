@@ -8,9 +8,17 @@ import ManagerCertificate from "../../../components/management/manager/managerCe
 import ManagerHoliday from "../../../components/management/manager/managerHoliday";
 import ManagerSchedule from "../../../components/management/manager/managerSchedule";
 import CustomBtn from "../../../components/buttons";
+import { useEffect } from "react";
+import { GetManagerDetail } from "../../../api/management/manager";
 
 const ManagerDetail = () => {
   const param = useParams();
+  useEffect(async () => {
+    const res = await GetManagerDetail(param.id);
+
+    // console.log("param=", param.id);
+    console.log("res=", res);
+  });
   const id = param.id; //url에 query로 사용
 
   const info = {
