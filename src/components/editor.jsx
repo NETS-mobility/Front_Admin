@@ -65,7 +65,13 @@ const Editor = memo(({ quillRef, api, htmlContent, setHtmlContent }) => {
         onChange={setHtmlContent}
         modules={modules}
         theme="snow"
-        className={"editorContents"}
+        style={{
+          width: "100%",
+          height: "60vh",
+          background: "white",
+          overflow: "auto",
+        }}
+        placeholder={"내용을 입력해주세요."}
       />
     </>
   );

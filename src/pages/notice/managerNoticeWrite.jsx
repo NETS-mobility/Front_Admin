@@ -45,7 +45,7 @@ const ManagerNoticeWrite = memo(() => {
     <Layout>
       <section className="editorAll">
         <section className="editorTop">
-          <div className="editorTopTitle">공지사항 등록</div>
+          <div className="editorTopTitle">매니저 공지사항 등록</div>
         </section>
         <section className="editorBottom">
           <div>
@@ -53,7 +53,7 @@ const ManagerNoticeWrite = memo(() => {
               type="text"
               name="title"
               value={title}
-              placeholder={"제목을 입력해주세요"}
+              placeholder={"  제목을 입력해주세요."}
               onChange={changeValue}
               className="editorTitle"
             />
@@ -62,9 +62,11 @@ const ManagerNoticeWrite = memo(() => {
               htmlContent={htmlContent}
               setHtmlContent={setHtmlContent}
             />
-            <button className="editorSubmitBtn" onClick={handleSubmit}>
-              작성 완료
-            </button>
+            <div className="editorBtnArea">
+              <button className="editorSubmitBtn" onClick={handleSubmit}>
+                작성 완료
+              </button>
+            </div>
           </div>
         </section>
       </section>

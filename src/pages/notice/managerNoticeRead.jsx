@@ -9,7 +9,7 @@ const ManagerNoticeRead = memo(() => {
   const [content, setContent] = useState("");
 
   axios
-    .post("http://localhost:5000/admin/board/manager/read/1")
+    .post("http://localhost:5000/admin/board/manager/read/" + "2")
     .then((response) => {
       console.log("response: ", response);
       // const accessToken = response.data.jwtToken;

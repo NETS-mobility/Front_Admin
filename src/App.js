@@ -27,7 +27,7 @@ import ManagerRegister from "./pages/management/manager/managerRegister";
 import ManagerRegisterComplete from "./pages/management/manager/managerRegisterComplete";
 import CarRegister from "./pages/management/car/carRegister";
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "http://35.197.107.190:5000";
 
 const App = () => {
   Modal.setAppElement("#root");
@@ -42,7 +42,7 @@ const App = () => {
         <Route path="/notice/manager/read" element={<ManagerNoticeRead />} />
         <Route path="/notice/manager/write" element={<ManagerNoticeWrite />} />
         <Route path="/serviceStat" element={<ServiceStat />} />
-        <Route path="/adminRegister" element={<AdminRegister />} />
+        <Route path="/manage/admin/register" element={<AdminRegister />} />
         <Route path="/" element={<ManagerList />} />
 
         <Route path="/manage/member/list" element={<MemberList />} />

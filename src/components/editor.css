@@ -1,4 +1,8 @@
 .editorContents {
   width: 100%;
-  height: 600px;
+  min-height: 600px;
+  background-color: white;
+  border-width: 0px;
+  border-color: white;
+  overflow-y: scroll;
 }
