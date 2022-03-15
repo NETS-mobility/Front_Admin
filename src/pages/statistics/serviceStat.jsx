@@ -24,7 +24,7 @@ const ServiceStat = () => {
 
   const onClick = async () => {
     await axios
-      .post("http://localhost:5000/admin/statistics/service", {
+      .post("/admin/statistics/service", {
         start: startDate,
         end: endDate,
       })

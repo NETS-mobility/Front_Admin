@@ -100,7 +100,7 @@ const SideBar = () => {
         bigMenu={"공지사항"}
         smallMenu={[
           { title: "고객용", link: "/noticeForMember" },
-          { title: "매니저용", link: "/noticeForManager" },
+          { title: "매니저용", link: "/notice/manager/read" },
         ]}
         open={open}
         setOpen={() => setOpen(5)}

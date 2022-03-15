@@ -17,7 +17,7 @@
 .editorBottom {
   display: flex;
   flex-direction: column;
-  width: 98%;
+  width: 95%;
 }
 
 .editorTop {
@@ -36,14 +36,12 @@
 }
 
 .editorContents {
-  height: 70%;
+  height: 100vh;
 }
 
 .editorSubmitBtn {
   width: 343px;
   height: 79px;
-  left: 700px;
-  top: 895px;
   background: #19b7cd;
   border-radius: 30px;
   font-weight: 400;
@@ -53,4 +51,11 @@
   color: #ffffff;
   border: 0px;
   margin-top: 50px;
+  align-self: center;
+}
+
+.editorBtnArea {
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }

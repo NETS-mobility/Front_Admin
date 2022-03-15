@@ -17,10 +17,10 @@ const Login = () => {
 
   const onClick = () => {
     axios
-      .post("http://localhost:5000/admin/login", { id: id, password: password })
+      .post("/admin/login", { id: id, password: password })
       .then((response) => {
         console.log("response: ", response);
-        const accessToken = response.data.jwtToken;
+        const accessToken = response.data.token;
         localStorage.setItem("accessToken", accessToken);
         if (accessToken) {
           navigate("/");
