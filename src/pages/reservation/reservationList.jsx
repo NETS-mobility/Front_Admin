@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NewTableList from "../../components/newTableList";
+// import TableList from "../../components/tableList";
 import Layout from "../../layout/layout";
 import { ReservationState } from "../../components/reservation/reservationState";
 import CustomDatePicker from "../../components/customDatePicker";
@@ -26,14 +26,19 @@ const ReservationList = () => {
         </section>
         <div className="reservation-bottom">
           <section className="reservation-tablelist">
-            <NewTableList
-              needCheck={false}
-              titles={["서비스 ID", "매니저 이메일", "운행 시작 시간"]}
-              props={["number", "manager_name", "date", "date2"]}
-              datas={list}
-              baseURL={"/car/detail"}
-              detailProp={"id"}
-            />
+            {/* <TableList
+              ischeck={false}
+              information={
+                reservationstate == "start"
+                  ? startList
+                  : reservationstate == "before"
+                  ? beforeList
+                  : doneList
+              }
+              title1={"서비스 ID"}
+              title2={"매니저 이메일"}
+              title3={"운행 시작 시간"}
+            /> */}
           </section>
         </div>
       </div>
