@@ -15,7 +15,7 @@ const CurrentExtraPay = ({ cost }) => {
         <CostTitle
           text={{
             text1: `${extraCost[0].extra_cost_unit_value} ${extraCost[0].extra_cost_unit}`,
-            text2: `${Number(extraCost[0].extra_cost_per_unit_value)}원`,
+            text2: `${Number(extraCost[0].extra_cost_per_unit_value)} 원`,
           }}
         />
       </CostLine>

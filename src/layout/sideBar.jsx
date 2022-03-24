@@ -69,7 +69,7 @@ const SideBar = () => {
       />
       <NavItem
         bigMenu={"예약 내역"}
-        smallMenu={[{ title: "운행정보 확인", link: "/checkReservation" }]}
+        smallMenu={[{ title: "운행정보 확인", link: "/reservation/list" }]}
         open={open}
         setOpen={() => setOpen(2)}
         i={2}
