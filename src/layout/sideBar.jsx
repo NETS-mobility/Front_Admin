@@ -99,8 +99,8 @@ const SideBar = () => {
       <NavItem
         bigMenu={"공지사항"}
         smallMenu={[
-          { title: "고객용", link: "/noticeForMember" },
-          { title: "매니저용", link: "/notice/manager/read" },
+          { title: "고객용", link: "/notice/customer/list" },
+          { title: "매니저용", link: "/notice/manager/list" },
         ]}
         open={open}
         setOpen={() => setOpen(5)}
