@@ -1,0 +1,27 @@
+.title {
+  width: 95%;
+  margin: 0 auto 10px;
+}
+
+.currentPayContents {
+  width: 95%;
+  margin: 0 auto 20px;
+}
+
+.currentPayContents .payWithCategory {
+  width: 100%;
+  padding: 28px;
+  background-color: #fff;
+  margin-bottom: 30px;
+}
+
+.payEditBtnSection {
+  display: flex;
+  justify-content: center;
+}
+
+.payEditBtn {
+  margin: 0 auto;
+  width: 429px;
+  height: 92px;
+}
