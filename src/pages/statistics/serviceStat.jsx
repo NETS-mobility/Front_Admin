@@ -6,8 +6,8 @@ import {
   StatisticsLongBox,
   StatisticsTwoContentsBox,
 } from "../../components/statistics/statisticsBox";
-import axios from "axios";
 import CustomDatePicker from "../../components/customDatePicker";
+import { GetStatistics } from "../../api/statistics/getStatistics";
 
 const ServiceStat = () => {
   const [startDate, setStartDate] = useState("");
@@ -18,42 +18,29 @@ const ServiceStat = () => {
     reservation_count: 0,
     sales: 0,
     service_count: 0,
+    gowith_time: 0.0,
     total_distance: { sum: 0, avg: 0 },
     total_time: { sum: 0, avg: 0 },
   });
 
   const onClick = async () => {
-    await axios
-      .post("/admin/statistics/service", {
-        start: startDate,
-        end: endDate,
-      })
-      .then((response) => {
-        console.log("response: ", response.data);
-        // const accessToken = response.data.jwtToken;
-        // localStorage.setItem("accessToken", accessToken);
-        // if (accessToken) {
-        //   navigate("/");
-        // }
-        setData({
-          cancle_count: response.data.cancel_count,
-          customer_new: response.data.customer_new,
-          reservation_count: response.data.reservation_count,
-          sales: response.data.sales,
-          service_count: response.data.service_count,
-          total_distance: {
-            sum: response.data.total_distance.sum,
-            avg: response.data.total_distance.avg,
-          },
-          total_time: {
-            sum: response.data.total_time.sum,
-            avg: response.data.total_time.avg,
-          },
-        });
-      })
-      .catch(function (error) {
-        console.log("error: ", error);
-      });
+    const res = await GetStatistics(startDate, endDate);
+    setData({
+      cancle_count: res.cancel_count,
+      customer_new: res.customer_new,
+      reservation_count: res.reservation_count,
+      sales: res.sales,
+      service_count: res.service_count,
+      gowith_time: res.gowith_time,
+      total_distance: {
+        sum: res.total_distance.sum,
+        avg: res.total_distance.avg,
+      },
+      total_time: {
+        sum: res.total_time.sum,
+        avg: res.total_time.avg,
+      },
+    });
   };
   useEffect(() => {
     console.log("startDate", startDate);
@@ -77,7 +64,7 @@ const ServiceStat = () => {
           <div className="stat-boxline">
             <StatisticsBox
               title={"예약건수"}
-              contents={data.reservation_count}
+              contents={`${data.reservation_count}건`}
             />
             <StatisticsBox
               title={"서비스건수"}
@@ -106,7 +93,10 @@ const ServiceStat = () => {
               contents1={`${data.total_time.sum} 시간`}
               contents2={`${data.total_time.avg} 시간`}
             />
-            <StatisticsBox title={"평균 병원동행 시간"} />
+            <StatisticsBox
+              title={"평균 병원동행 시간"}
+              contents={`${data.gowith_time}시간`}
+            />
           </div>
         </section>
       </div>

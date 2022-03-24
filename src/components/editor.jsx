@@ -15,24 +15,24 @@ const Editor = memo(({ quillRef, api, htmlContent, setHtmlContent }) => {
 
     input.onchange = async () => {
       const file = input.files[0];
-      formData.append("image", file);
+      formData.append("file", file);
 
-      console.log("formData?==", JSON.stringify(formData));
-      // const res = await api.uploadImage(formData);
-      // if (!res.success) {
-      //   alert("이미지 업로드에 실패하였습니다.");
-      // }
-      // const url = res.payload.url;
-      // const quill = quillRef.current.getEditor();
-      // const range = quill.getSelection()?.index;
-      // if (typeof range !== "number") return;
+      console.log("formData?==", formData);
+      const res = await api.uploadImage(formData);
+      if (!res.success) {
+        alert("이미지 업로드에 실패하였습니다.");
+      }
+      const url = res.payload.url;
+      const quill = quillRef.current.getEditor();
+      const range = quill.getSelection()?.index;
+      if (typeof range !== "number") return;
 
-      // quill.setSelection(range, 1);
+      quill.setSelection(range, 1);
 
-      // quill.clipboard.dangerouslyPasteHTML(
-      //   range,
-      //   `<img src=${url} alt="image" />`
-      // );
+      quill.clipboard.dangerouslyPasteHTML(
+        range,
+        `<img src=${url} alt="image" />`
+      );
     };
   }, [api, quillRef]);
 

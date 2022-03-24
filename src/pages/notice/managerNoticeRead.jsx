@@ -54,6 +54,12 @@ const ManagerNoticeRead = memo(() => {
           <CustomBtn
             styleForBtn={[btnStyles.btnBlue, "noticeWriteBtn"].join(" ")}
             styleForText={typoStyles.fs36}
+            text={"공지사항 목록"}
+            onClick={() => navigate("/notice/manager/list")}
+          />
+          <CustomBtn
+            styleForBtn={[btnStyles.btnBlue, "noticeWriteBtn"].join(" ")}
+            styleForText={typoStyles.fs36}
             text={"공지사항 수정"}
             onClick={() => navigate("/notice/manager/write")}
           />

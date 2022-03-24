@@ -13,7 +13,11 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  useEffect = () => {};
+  // useEffect(() => {
+  //   if (localStorage.getItem("accessToken")) {
+  //     navigate("/");
+  //   }
+  // }, []);
 
   const onClick = () => {
     axios
@@ -22,6 +26,7 @@ const Login = () => {
         console.log("response: ", response);
         const accessToken = response.data.token;
         localStorage.setItem("accessToken", accessToken);
+        // window.location.reload();
         if (accessToken) {
           navigate("/");
         }
