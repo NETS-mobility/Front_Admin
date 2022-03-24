@@ -1,0 +1,67 @@
+.payPerServiceBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 33%;
+  height: 376px;
+  background-color: #fff;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.payWithCategory {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+}
+
+.payWithCategory .title {
+  width: 30%;
+}
+
+.payWithCategory .content,
+.payWithCategory .content_case3 {
+  width: 20%;
+  text-align: center;
+}
+
+.payWithCategory .content .contentInput {
+  outline: none;
+  border: 0;
+  border-bottom: 2px solid #737373;
+  width: 200px;
+  text-align: right;
+}
+
+.payWithCategory .content_case3 .contentInput {
+  outline: none;
+  border: 0;
+  border-bottom: 2px solid #737373;
+  width: 120px;
+  text-align: center;
+}
+
+.inputBox {
+  display: inline-block;
+  width: 30%;
+  border: 0;
+  border-bottom: 1px solid #737373;
+  outline: none;
+  text-align: right;
+  padding: 5px;
+}
+
+.textInputBox {
+  margin-top: 20px;
+}
+
+.textInputBox .textInput {
+  display: inline-block;
+  width: 200px;
+  border: 0;
+  border-bottom: 1px solid #737373;
+  outline: none;
+  text-align: right;
+  padding: 5px;
+}

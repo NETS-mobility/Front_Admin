@@ -21,8 +21,8 @@ import ManagerDetailEdit from "./pages/management/manager/managerDetailEdit";
 import AdminDetail from "./pages/management/admin/adminDetail";
 import AdminDetailEdit from "./pages/management/admin/adminDetailEdit";
 import CarDetail from "./pages/management/car/carDetail";
-// import CurrentPay from "./pages/pay/currentPay";
-// import EditPay from "./pages/pay/editPay";
+import CurrentPay from "./pages/pay/currentPay";
+import EditPay from "./pages/pay/editPay";
 import ManagerRegister from "./pages/management/manager/managerRegister";
 import ManagerRegisterComplete from "./pages/management/manager/managerRegisterComplete";
 import CarRegister from "./pages/management/car/carRegister";
@@ -68,9 +68,9 @@ const App = () => {
         <Route path="/manage/car/register" element={<CarRegister />} />
         <Route path="/car/detail/:id" element={<CarDetail />} />
 
-        {/* <Route path="/setFee" element={<CurrentPay />} />
-        <Route path="/editFee" element={<EditPay />} /> */}
-        {/* <Route path="/admin/detail/edit/:id" element={<AdminDetailEdit />} /> */}
+        <Route path="/setFee" element={<CurrentPay />} />
+        <Route path="/editFee" element={<EditPay />} />
+        <Route path="/admin/detail/edit/:id" element={<AdminDetailEdit />} />
       </Routes>
     </Router>
   );
