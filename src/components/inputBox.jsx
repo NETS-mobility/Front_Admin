@@ -11,7 +11,6 @@ const InputBox = ({ ispass, name, placeholder, value, setValue }) => {
       type={ispass ? "password" : "text"}
       name={name}
       value={value}
-      setValue={setValue}
       placeholder={placeholder}
       onChange={changeValue}
       className="inputboxstyle"

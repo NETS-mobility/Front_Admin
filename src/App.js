@@ -6,6 +6,9 @@ import ReservationDetail from "./pages/reservation/reservationDetail";
 import ChangePW from "./pages/login/changePW";
 import ManagerNoticeWrite from "./pages/notice/managerNoticeWrite";
 import ManagerNoticeRead from "./pages/notice/managerNoticeRead";
+import ManagerNoticeList from "./pages/notice/managerNoticeList";
+import CustomerNoticeRead from "./pages/notice/customerNoticeRead";
+import CustomerNoticeList from "./pages/notice/customerNoticeList";
 import ServiceStat from "./pages/statistics/serviceStat";
 import AdminRegister from "./pages/admin/adminRegister";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -39,7 +42,16 @@ const App = () => {
         <Route path="/changePW" element={<ChangePW />} />
         <Route path="/reservation/list" element={<ReservationList />} />
         <Route path="/reservation/detail/:id" element={<ReservationDetail />} />
-        <Route path="/notice/manager/read" element={<ManagerNoticeRead />} />
+        <Route
+          path="/notice/customer/read/:id"
+          element={<CustomerNoticeRead />}
+        />
+        <Route path="/notice/customer/list" element={<CustomerNoticeList />} />
+        <Route
+          path="/notice/manager/read/:id"
+          element={<ManagerNoticeRead />}
+        />
+        <Route path="/notice/manager/list" element={<ManagerNoticeList />} />
         <Route path="/notice/manager/write" element={<ManagerNoticeWrite />} />
         <Route path="/serviceStat" element={<ServiceStat />} />
         <Route path="/manage/admin/register" element={<AdminRegister />} />

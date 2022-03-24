@@ -4,14 +4,14 @@ import typoStyles from "../../assets/fonts/typography.module.css";
 import btnStyles from "../../components/buttons.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import {
-  DeleteManagerNotice,
-  GetManagerNoticeRead,
+  DeleteCustomerNotice,
+  GetCustomerNoticeRead,
 } from "../../api/notice/noticeAPI";
 import Layout from "../../layout/layout";
 import CustomBtn from "../../components/buttons";
 import "./noticeStyles.css";
 
-const ManagerNoticeRead = memo(() => {
+const CustomerNoticeRead = memo(() => {
   const navigate = useNavigate();
   const param = useParams();
   const [title, setTitle] = useState("");
@@ -21,7 +21,7 @@ const ManagerNoticeRead = memo(() => {
   const [view, setView] = useState(0);
 
   useEffect(async () => {
-    const res = await GetManagerNoticeRead(param.id);
+    const res = await GetCustomerNoticeRead(param.id);
     setTitle(res.title);
     setContent(res.content);
     setDate(res.date.substring(0, 10));
@@ -33,7 +33,7 @@ const ManagerNoticeRead = memo(() => {
     <Layout>
       <section className="editorAll">
         <section className="editorTop">
-          <div className="editorTopTitle">매니저 공지사항 조회</div>
+          <div className="editorTopTitle">고객 공지사항 조회</div>
         </section>
         <section className="noticeReadBottom">
           <span className="noticeReadTitle">{title}</span>
@@ -55,17 +55,17 @@ const ManagerNoticeRead = memo(() => {
             styleForBtn={[btnStyles.btnBlue, "noticeWriteBtn"].join(" ")}
             styleForText={typoStyles.fs36}
             text={"공지사항 수정"}
-            onClick={() => navigate("/notice/manager/write")}
+            onClick={() => navigate("/notice/customer/write")}
           />
           <CustomBtn
             styleForBtn={[btnStyles.btnOrange, "noticeWriteBtn"].join(" ")}
             styleForText={typoStyles.fs36}
             text={"공지사항 삭제"}
             onClick={async () => {
-              const res = await DeleteManagerNotice(param.id);
+              const res = await DeleteCustomerNotice(param.id);
               if (res.status == 200) {
                 alert("공지사항이 삭제되었습니다!");
-                navigate("/notice/manager/list");
+                navigate("/notice/customer/list");
               } else {
                 alert("삭제되지 않았습니다. 다시 시도해주세요.");
               }
@@ -76,4 +76,4 @@ const ManagerNoticeRead = memo(() => {
     </Layout>
   );
 });
-export default ManagerNoticeRead;
+export default CustomerNoticeRead;

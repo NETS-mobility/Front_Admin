@@ -24,7 +24,7 @@ const AdminRegister = () => {
       setError("비밀번호를 입력해주세요.");
     } else if (confirmpass == "") {
       setError("비밀번호 확인을 입력해주세요.");
-    } else if (password == confirmpass) {
+    } else if (password != confirmpass) {
       setError("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
     } else if (name == "") {
       setError("이름을 입력해주세요.");
