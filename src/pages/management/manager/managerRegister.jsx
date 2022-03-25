@@ -66,13 +66,15 @@ const ManagerRegister = () => {
         매니저 등록
       </h1>
       <section className={styles.managerRegisterContent}>
-        <InputBox
+        <input
+          type="text"
           name={"name"}
           placeholder={"이름"}
           onChange={(e) => ChangeObject(setManager, "name", e)}
         />
         <div>
-          <InputBox
+          <input
+            type="text"
             name={"id"}
             placeholder={"아이디(이메일)"}
             onChange={(e) => ChangeObject(setManager, "id", e)}
@@ -82,43 +84,48 @@ const ManagerRegister = () => {
             styleForText={typoStyles.fs36}
             text={"중복확인"}
             onClick={() => {
-              err == "" && RegisterManager(manager);
+              err === "" && RegisterManager(manager);
             }}
           />
         </div>
-        <InputBox
-          ispass={true}
+        <input
+          type="password"
           name={"password"}
           placeholder={"비밀번호"}
           onChange={(e) => ChangeObject(setManager, "password", e)}
         />
-        <InputBox
-          ispass={true}
+        <input
+          type="password"
           name={"passwordConfirm"}
           placeholder={"비밀번호 확인"}
           onChange={(e) => ChangeObject(setManager, "passwordConfirm", e)}
         />
-        <InputBox
-          name={"birth"}
+        <input
+          type="text"
+          name={"phone"}
           placeholder={"휴대전화(ex. 010-0000-0000)"}
           onChange={(e) => ChangeObject(setManager, "phone", e)}
         />
-        <InputBox
+        <input
+          type="text"
           name={"birth"}
           placeholder={"생일(ex. 0000.00.00)"}
           onChange={(e) => ChangeObject(setManager, "birth", e)}
         />
-        <InputBox
+        <input
+          type="text"
           name={"driverLicense"}
           placeholder={"운전면허번호"}
           onChange={(e) => ChangeObject(setManager, "driverLicense", e)}
         />
-        <InputBox
+        <input
+          type="text"
           name={"bankName"}
-          placeholder={"은행 이름"}
+          placeholder={"은행이름"}
           onChange={(e) => ChangeObject(setManager, "bankName", e)}
         />
-        <InputBox
+        <input
+          type="text"
           name={"bankAccount"}
           placeholder={"계좌번호"}
           onChange={(e) => ChangeObject(setManager, "bankAccount", e)}
@@ -138,9 +145,10 @@ const ManagerRegister = () => {
           styleForText={typoStyles.fs36}
           text={"등록"}
           onClick={async () => {
-            if (err == "") {
-              const res = await RegisterManager(manager);
-              if (res.success == true) {
+            if (err === "") {
+              const token = localStorage.getItem("accessToken");
+              const res = await RegisterManager(manager, token);
+              if (res.success === true) {
                 navigate("/manage/manager/registerComplete");
               }
             }

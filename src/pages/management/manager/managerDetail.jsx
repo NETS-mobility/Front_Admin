@@ -1,6 +1,7 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Layout from "../../../layout/layout";
-import styles from "../management.module.css";
+import styles from "./manager.module.css";
 import typoStyles from "../../../assets/fonts/typography.module.css";
 import btnStyles from "../../../components/buttons.module.css";
 import ManagerProfile from "../../../components/management/manager/managerProfile";
@@ -8,27 +9,27 @@ import ManagerCertificate from "../../../components/management/manager/managerCe
 import ManagerHoliday from "../../../components/management/manager/managerHoliday";
 import ManagerSchedule from "../../../components/management/manager/managerSchedule";
 import CustomBtn from "../../../components/buttons";
-import { useEffect } from "react";
-import { GetManagerDetail } from "../../../api/management/manager";
+import { useEffect, useState } from "react";
+import {
+  DeleteManager,
+  GetManagerDetail,
+} from "../../../api/management/manager";
 
 const ManagerDetail = () => {
   const param = useParams();
+  const navigate = useNavigate();
+  const [detail, setDetail] = useState("");
+  const [cert, setCert] = useState([]);
+  const [show, setShow] = useState(true);
+
   useEffect(async () => {
-    const res = await GetManagerDetail(param.id);
+    setDetail(await GetManagerDetail(param.number));
+  }, []);
 
-    // console.log("param=", param.id);
-    console.log("res=", res);
-  });
-  const id = param.id; //url에 query로 사용
+  useEffect(() => {
+    setCert(detail?.certificate);
+  }, [detail]);
 
-  const info = {
-    img: "profile.png",
-    name: "김하나",
-    registerDate: "2021.12.02",
-    email: "email22@email.com",
-    phone: "010-1111-1111",
-    birth: "1975.02.14",
-  };
   return (
     <Layout>
       <h1
@@ -43,21 +44,41 @@ const ManagerDetail = () => {
       </h1>
 
       <div className={styles.oneLineBlock}>
-        <ManagerProfile info={info} />
+        <ManagerProfile info={detail?.manager} />
 
         <div className={styles.withTitle}>
-          <h1
-            className={[
-              styles.smallTitle,
-              typoStyles.fs24,
-              typoStyles.textExplain,
-              typoStyles.fw700,
-            ].join(" ")}
-          >
-            자격증
-          </h1>
+          <div className={styles.editSmallTitle}>
+            <h1
+              className={[
+                typoStyles.fs24,
+                typoStyles.textExplain,
+                typoStyles.fw700,
+              ].join(" ")}
+            >
+              자격증
+            </h1>
+
+            {show ? (
+              <CustomBtn
+                styleForBtn={[btnStyles.btnBlue, styles.editBtn].join(" ")}
+                styleForText={typoStyles.fs24}
+                text={"등록"}
+                onClick={() => {
+                  setShow(false);
+                  setCert([...cert, {}]);
+                }}
+              />
+            ) : (
+              <></>
+            )}
+          </div>
           <section className={styles.managerCommonBlockSection}>
-            <ManagerCertificate />
+            <ManagerCertificate
+              cert={cert}
+              userNum={param.number}
+              setCert={setCert}
+              setShow={setShow}
+            />
           </section>
         </div>
       </div>
@@ -70,18 +91,10 @@ const ManagerDetail = () => {
             typoStyles.textMain,
           ].join(" ")}
         >
-          현재 배차 가능
+          {detail?.manager?.available == 1
+            ? "현재 배차 가능"
+            : "현재 배차 불가능"}
         </strong>
-        {/* :
-        <strong
-          className={[
-            typoStyles.fs36,
-            typoStyles.fw700,
-            typoStyles.textPrimary,
-          ]}
-        >
-          현재 배차 불가능
-        </strong> */}
       </section>
 
       <div className={styles.oneLineBlock}>
@@ -97,7 +110,7 @@ const ManagerDetail = () => {
             스케줄 조회
           </h1>
           <section className={styles.managerCommonBlockSection}>
-            <ManagerSchedule />
+            <ManagerSchedule schedule={detail?.schedule} />
           </section>
         </div>
 
@@ -135,14 +148,21 @@ const ManagerDetail = () => {
           styleForBtn={[btnStyles.btnOrange, styles.managementBtn].join(" ")}
           styleForText={typoStyles.fs36}
           text={"매니저 삭제"}
+          onClick={async () => {
+            const res = await DeleteManager(param.number);
+            if (res == 200) {
+              navigate(`/manage/manager/list`);
+            }
+          }}
         />
-        <Link to="/manager/detail/edit/2">
-          <CustomBtn
-            styleForBtn={[btnStyles.btnOrange, styles.managementBtn].join(" ")}
-            styleForText={typoStyles.fs36}
-            text={"상세정보 수정"}
-          />
-        </Link>
+        <CustomBtn
+          styleForBtn={[btnStyles.btnOrange, styles.managementBtn].join(" ")}
+          styleForText={typoStyles.fs36}
+          text={"상세정보 수정"}
+          onClick={() =>
+            navigate(`/manager/detail/${param.number}/edit`, { detail })
+          }
+        />
       </section>
     </Layout>
   );

@@ -35,10 +35,10 @@ const ManagerList = () => {
         <NewTableList
           needCheck={false}
           titles={["매니저 ID", "매니저명", "등록 일자"]}
-          props={["name", "id", "date"]}
+          props={["id", "name", "date"]}
           datas={list}
           baseURL={"/manager/detail"}
-          detailProp={"num"}
+          detailProp={"number"}
         />
         <CustomBtn
           styleForBtn={[btnStyles.btnBlue, styles.managementBtn].join(" ")}

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Layout from "../../../layout/layout";
-import styles from "../management.module.css";
+import styles from "./manager.module.css";
 import typoStyles from "../../../assets/fonts/typography.module.css";
 import btnStyles from "../../../components/buttons.module.css";
 import ManagerProfile from "../../../components/management/manager/managerProfile";
@@ -10,6 +10,12 @@ import ManagerHoliday from "../../../components/management/manager/managerHolida
 import ManagerSchedule from "../../../components/management/manager/managerSchedule";
 import CustomBtn from "../../../components/buttons";
 import { useEffect } from "react";
+import {
+  DeleteCert,
+  EditManagerInfo,
+  GetManagerDetail,
+} from "../../../api/management/manager";
+import { EmailValidation, PhoneValidation } from "../../../util/validation";
 
 const EditCertificate = () => {
   return (
@@ -36,21 +42,55 @@ const EditCertificate = () => {
 
 const ManagerDetailEdit = () => {
   const param = useParams();
-  const id = param.id; //url에 query로 사용
-  const [open, setOpen] = useState(false);
+  const [detail, setDetail] = useState("");
+  const [cert, setCert] = useState([]);
+  const [deletedCert, setDeletedCert] = useState([]);
 
-  const info = {
-    img: "profile.png",
-    name: "김하나",
-    registerDate: "2021.12.02",
-    email: "email22@email.com",
-    phone: "010-1111-1111",
-    birth: "1975.02.14",
-  };
+  const [managerInfo, setManagerInfo] = useState({});
+  const [err, setErr] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(async () => {
+    setDetail(await GetManagerDetail(param.number));
+  }, []);
+
+  useEffect(() => {
+    setCert(detail?.certificate);
+    setManagerInfo({
+      number: detail?.manager?.number,
+      name: detail?.manager?.name,
+      id: detail?.manager?.id,
+      phone: detail?.manager?.phone,
+      birth: detail?.manager?.birth,
+      available: detail?.manager?.available,
+      path_pic: detail?.manager?.path_pic,
+      date: detail?.manager?.date,
+    });
+  }, [detail]);
+
+  useEffect(() => {
+    let filtered = "";
+    deletedCert.forEach((data) => {
+      filtered = cert.filter((i) => i.number != data);
+      setCert(filtered);
+    });
+  }, [deletedCert]);
+
+  useEffect(() => {
+    console.log("managerInfo", managerInfo);
+    if (!EmailValidation(managerInfo.id)) {
+      setErr("이메일 형식이 올바르지 않습니다.");
+    } else if (!PhoneValidation(managerInfo.phone)) {
+      setErr("휴대폰 번호는 010-0000-0000 형식으로 입력해주세요");
+    } else if (managerInfo.phone == "" || managerInfo.id == "") {
+      setErr("빈칸은 없어야 합니다.");
+    } else {
+      setErr("");
+    }
+  }, [managerInfo]);
 
   return (
     <>
-      {/* {open ? <EditCertificate /> : <></>} */}
       <Layout>
         <h1
           className={[
@@ -62,9 +102,12 @@ const ManagerDetailEdit = () => {
         >
           매니저 조회
         </h1>
-
         <div className={styles.oneLineBlock}>
-          <ManagerProfile info={info} type={"edit"} />
+          <ManagerProfile
+            info={managerInfo}
+            setInfo={setManagerInfo}
+            type={"edit"}
+          />
 
           <div className={styles.withTitle}>
             <div className={styles.editSmallTitle}>
@@ -77,19 +120,17 @@ const ManagerDetailEdit = () => {
               >
                 자격증
               </h1>
-              <CustomBtn
-                styleForBtn={[btnStyles.btnBlue, styles.editBtn].join(" ")}
-                styleForText={typoStyles.fs20}
-                text={"등록"}
-                onClick={() => setOpen(true)}
-              />
             </div>
             <section className={styles.managerCommonBlockSection}>
-              <ManagerCertificate type={"edit-certificate"} />
+              <ManagerCertificate
+                cert={cert}
+                type={"edit-certificate"}
+                userNum={param.number}
+                setDeletedCert={setDeletedCert}
+              />
             </section>
           </div>
         </div>
-
         <section
           className={[
             styles.availableEdit,
@@ -99,15 +140,26 @@ const ManagerDetailEdit = () => {
           ].join(" ")}
         >
           <div className={styles.availableEditOne}>
-            <input type="radio" name="available" id="yes" />
+            <input
+              type="radio"
+              name="available"
+              id="yes"
+              defaultChecked={managerInfo.available}
+              onChange={() => setManagerInfo({ ...managerInfo, available: 1 })}
+            />
             <label htmlFor="yes">배차 가능</label>
           </div>
           <div className={styles.availableEditOne}>
-            <input type="radio" name="available" id="no" />
+            <input
+              type="radio"
+              name="available"
+              id="no"
+              defaultChecked={!managerInfo.available}
+              onChange={() => setManagerInfo({ ...managerInfo, available: 0 })}
+            />
             <label htmlFor="no">배차 불가능</label>
           </div>
         </section>
-
         <div className={styles.oneLineBlock}>
           <div className={styles.withTitle}>
             <h1
@@ -120,8 +172,9 @@ const ManagerDetailEdit = () => {
             >
               스케줄 조회
             </h1>
+
             <section className={styles.managerCommonBlockSection}>
-              <ManagerSchedule />
+              <ManagerSchedule schedule={detail?.schedule} />
             </section>
           </div>
 
@@ -154,11 +207,30 @@ const ManagerDetailEdit = () => {
           </div>
         </div>
 
+        <span
+          className={[
+            typoStyles.fs36,
+            typoStyles.textPrimary,
+            styles.errMsg,
+          ].join(" ")}
+        >
+          {err != "" ? err : ""}
+        </span>
         <section className={styles.btnSection}>
           <CustomBtn
+            disableStyleForBtn={[
+              btnStyles.btnLightGrey,
+              styles.managementBtn,
+            ].join(" ")}
             styleForBtn={[btnStyles.btnBlue, styles.managementBtn].join(" ")}
             styleForText={typoStyles.fs36}
             text={"수정 완료"}
+            disabled={err != ""}
+            onClick={async () => {
+              await EditManagerInfo(managerInfo);
+              await DeleteCert(deletedCert, param.number);
+              navigate(`/manager/detail/${param.number}`);
+            }}
           />
         </section>
       </Layout>
