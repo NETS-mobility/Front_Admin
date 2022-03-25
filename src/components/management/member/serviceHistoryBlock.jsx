@@ -1,6 +1,6 @@
 import styles from "./serviceHistoryBlock.module.css";
 import typoStyles from "../../../assets/fonts/typography.module.css";
-const ServiceHistoryBlock = () => {
+const ServiceHistoryBlock = ({ data }) => {
   return (
     <section className={styles.serviceHistoryBlock}>
       <div className={styles.serviceDate}>
@@ -11,7 +11,7 @@ const ServiceHistoryBlock = () => {
             typoStyles.textExplain,
           ].join(" ")}
         >
-          2021.12.01
+          {data.rev_date.substring(0, 10)}
         </strong>
         <strong
           className={[
@@ -20,7 +20,10 @@ const ServiceHistoryBlock = () => {
             typoStyles.textExplain,
           ].join(" ")}
         >
-          09:00 ~ 12:30
+          {`${data.pickup_time.substring(0, 5)} ~ ${data.end_time.substring(
+            0,
+            5
+          )}`}
         </strong>
       </div>
       <div className={styles.serviceInfo}>
@@ -40,7 +43,7 @@ const ServiceHistoryBlock = () => {
             typoStyles.textMain,
           ].join(" ")}
         >
-          네츠 휠체어 플러스 왕복
+          {data.service_type}
         </strong>
       </div>
       <span
