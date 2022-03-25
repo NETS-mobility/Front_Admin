@@ -1,6 +1,6 @@
 import Layout from "../../../layout/layout";
 import NewTableList from "../../../components/newTableList";
-import styles from "../management.module.css";
+import styles from "./member.module.css";
 import typoStyles from "../../../assets/fonts/typography.module.css";
 import { GetMemberList } from "../../../api/management/member";
 import { useEffect, useState } from "react";
@@ -33,7 +33,7 @@ const MemberList = () => {
           props={["name", "id", "date"]}
           datas={list}
           baseURL={"/member/detail"}
-          detailProp={"num"}
+          detailProp={"number"}
         />
       </section>
     </Layout>

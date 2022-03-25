@@ -1,0 +1,32 @@
+.manageContentSection {
+  width: 95%;
+  height: 80vh;
+  overflow-y: scroll;
+  background-color: #fff;
+  padding: 30px 50px;
+  margin: 0 auto;
+}
+
+.title {
+  width: 95%;
+  margin: 0 auto 10px;
+}
+
+.memberInfoSection {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  background-color: #fff;
+  margin: 0 auto 60px;
+  padding: 25px 30px;
+}
+
+.serviceHistorySection {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  height: 480px;
+  background-color: #f7f7f7;
+  overflow-y: scroll;
+  margin: 0 auto;
+}
