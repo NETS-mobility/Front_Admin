@@ -1,24 +1,11 @@
 import axios from "axios";
 import GetToken from "../../util/getToken";
-const ManagerDupCheck = async (id) => {
-  try {
-    const res = await axios.post("/admin/register/manager", {
-      id,
-    });
-    console.log("res==", res.data);
-    return res.data;
-  } catch (err) {
-    console.log("err=", err);
-    return err;
-  }
-};
-
 const EditManagerInfo = async (data) => {
   const arrangedData = {
     number: data.number,
     id: data.id,
     phone: data.phone,
-    available: data.available == 0 ? false : true,
+    available: data.available,
     salary: 0,
   };
 

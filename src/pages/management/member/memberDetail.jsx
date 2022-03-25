@@ -1,5 +1,5 @@
 import Layout from "../../../layout/layout";
-import styles from "../management.module.css";
+import styles from "./member.module.css";
 import typoStyles from "../../../assets/fonts/typography.module.css";
 import { useParams } from "react-router-dom";
 import ServiceHistoryBlock from "../../../components/management/member/serviceHistoryBlock";
@@ -11,8 +11,9 @@ import SplitDate from "../../../util/splitDate";
 const MemberDetail = () => {
   const param = useParams();
   const [member, setMember] = useState([]);
+  console.log("param=", param);
   useEffect(async () => {
-    setMember(await GetMemberDetail(param.id));
+    setMember(await GetMemberDetail(param.number));
   }, []);
 
   return (
@@ -38,10 +39,13 @@ const MemberDetail = () => {
         회원 정보
       </h1>
       <section className={styles.memberInfoSection}>
-        <MemberInfoLine title={"고객명"} value={member.name} />
-        <MemberInfoLine title={"가입일자"} value={SplitDate(member.date)} />
-        <MemberInfoLine title={"이메일"} value={member.id} />
-        <MemberInfoLine title={"휴대전화"} value={member.phone} />
+        <MemberInfoLine title={"고객명"} value={member?.user?.name} />
+        <MemberInfoLine
+          title={"가입일자"}
+          value={SplitDate(member?.user?.date)}
+        />
+        <MemberInfoLine title={"이메일"} value={member?.user?.id} />
+        <MemberInfoLine title={"휴대전화"} value={member?.user?.phone} />
       </section>
 
       <h1
@@ -55,10 +59,10 @@ const MemberDetail = () => {
         이용내역 조회
       </h1>
       <section className={styles.serviceHistorySection}>
-        <ServiceHistoryBlock />
-        <ServiceHistoryBlock />
-        <ServiceHistoryBlock />
-        <ServiceHistoryBlock />
+        {/* ==================== 매니저 이름 바꿔야 함 ====================*/}
+        {member?.rev?.map((data, i) => {
+          return <ServiceHistoryBlock data={data} key={i} />;
+        })}
       </section>
     </Layout>
   );

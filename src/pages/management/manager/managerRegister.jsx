@@ -1,7 +1,6 @@
 import Layout from "../../../layout/layout";
 import styles from "./manager.module.css";
 import typoStyles from "../../../assets/fonts/typography.module.css";
-import { InputBox } from "../../../components/inputBox";
 import CustomBtn from "../../../components/buttons";
 import btnStyles from "../../../components/buttons.module.css";
 import { useEffect, useState } from "react";
@@ -71,64 +70,63 @@ const ManagerRegister = () => {
           name={"name"}
           placeholder={"이름"}
           onChange={(e) => ChangeObject(setManager, "name", e)}
+          className={"inputboxstyle"}
         />
-        <div>
-          <input
-            type="text"
-            name={"id"}
-            placeholder={"아이디(이메일)"}
-            onChange={(e) => ChangeObject(setManager, "id", e)}
-          />
-          <CustomBtn
-            styleForBtn={[btnStyles.btnDarkGrey, styles.registerBtn].join(" ")}
-            styleForText={typoStyles.fs36}
-            text={"중복확인"}
-            onClick={() => {
-              err === "" && RegisterManager(manager);
-            }}
-          />
-        </div>
+        <input
+          type="text"
+          name={"id"}
+          placeholder={"아이디(이메일)"}
+          onChange={(e) => ChangeObject(setManager, "id", e)}
+          className={"inputboxstyle"}
+        />
         <input
           type="password"
           name={"password"}
           placeholder={"비밀번호"}
           onChange={(e) => ChangeObject(setManager, "password", e)}
+          className={"inputboxstyle"}
         />
         <input
           type="password"
           name={"passwordConfirm"}
           placeholder={"비밀번호 확인"}
           onChange={(e) => ChangeObject(setManager, "passwordConfirm", e)}
+          className={"inputboxstyle"}
         />
         <input
           type="text"
           name={"phone"}
           placeholder={"휴대전화(ex. 010-0000-0000)"}
           onChange={(e) => ChangeObject(setManager, "phone", e)}
+          className={"inputboxstyle"}
         />
         <input
           type="text"
           name={"birth"}
-          placeholder={"생일(ex. 0000.00.00)"}
+          placeholder={"생일(YYYYMMDD)"}
           onChange={(e) => ChangeObject(setManager, "birth", e)}
+          className={"inputboxstyle"}
         />
         <input
           type="text"
           name={"driverLicense"}
           placeholder={"운전면허번호"}
           onChange={(e) => ChangeObject(setManager, "driverLicense", e)}
+          className={"inputboxstyle"}
         />
         <input
           type="text"
           name={"bankName"}
           placeholder={"은행이름"}
           onChange={(e) => ChangeObject(setManager, "bankName", e)}
+          className={"inputboxstyle"}
         />
         <input
           type="text"
           name={"bankAccount"}
           placeholder={"계좌번호"}
           onChange={(e) => ChangeObject(setManager, "bankAccount", e)}
+          className={"inputboxstyle"}
         />
         <span
           className={[

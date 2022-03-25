@@ -1,5 +1,5 @@
 import Layout from "../../../layout/layout";
-import styles from "../management.module.css";
+import styles from "./manager.module.css";
 import typoStyles from "../../../assets/fonts/typography.module.css";
 import CustomBtn from "../../../components/buttons";
 import btnStyles from "../../../components/buttons.module.css";
@@ -52,7 +52,3 @@ const ManagerList = () => {
 };
 
 export default ManagerList;
-/*
-
-
-*/

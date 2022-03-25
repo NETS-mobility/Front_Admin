@@ -3,6 +3,22 @@
   margin: 0 auto 10px;
 }
 
+.manageContentSection {
+  width: 95%;
+  height: 80vh;
+  overflow-y: scroll;
+  background-color: #fff;
+  padding: 30px 50px;
+  margin: 0 auto;
+}
+
+.managementBtn {
+  display: flex;
+  width: 343px;
+  height: 79px;
+  margin: 0 auto;
+}
+
 .carRegisterContent {
   position: relative;
   display: flex;
@@ -10,7 +26,8 @@
   align-items: center;
   justify-content: center;
   width: 95%;
-  height: 90%;
+  height: 80vh;
+  overflow-y: scroll;
   background-color: #fff;
   padding: 30px 50px;
   margin: 0 auto;

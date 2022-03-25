@@ -16,7 +16,8 @@
   align-items: center;
   justify-content: center;
   width: 95%;
-  height: 90%;
+  height: 90vh;
+  overflow-y: scroll;
   background-color: #fff;
   padding: 30px 50px;
   margin: 0 auto;
@@ -143,4 +144,13 @@
 .errMsg {
   display: flex;
   justify-content: center;
+}
+
+.manageContentSection {
+  width: 95%;
+  height: 80vh;
+  overflow-y: scroll;
+  background-color: #fff;
+  padding: 30px 50px;
+  margin: 0 auto;
 }

@@ -21,8 +21,8 @@ const EditLine = ({ title, value, setValue }) => {
           typoStyles.fw400,
           styles.inputValue,
         ].join(" ")}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
+        value={value == undefined ? "" : value}
+        onChange={setValue}
       />
     </div>
   );

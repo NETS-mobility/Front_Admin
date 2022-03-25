@@ -1,7 +1,6 @@
 import Layout from "../../../layout/layout";
 import styles from "./car.module.css";
 import typoStyles from "../../../assets/fonts/typography.module.css";
-import { InputBox } from "../../../components/inputBox";
 import CustomBtn from "../../../components/buttons";
 import btnStyles from "../../../components/buttons.module.css";
 import { useEffect, useState } from "react";
@@ -10,6 +9,7 @@ import { GetManagerList } from "../../../api/management/manager";
 import { useNavigate } from "react-router-dom";
 import DaumPost from "../../../util/searchAddr";
 import { RegisterCar } from "../../../api/management/car";
+import GeoCoder from "../../../util/geocoder";
 
 const CarRegister = () => {
   let navigate = useNavigate();
@@ -18,10 +18,11 @@ const CarRegister = () => {
   const [car, setCar] = useState({
     number: "",
     type: "",
-    manager_number: "",
-    garage: "",
+    netsmanager_number: "",
+    garage_address: "",
+    x: 0,
+    y: 0,
   });
-  const [addr, setAddr] = useState("");
   const [open, setOpen] = useState(false);
 
   const CheckErr = () => {
@@ -29,7 +30,7 @@ const CarRegister = () => {
       car.number == "" ||
       car.type == "" ||
       car.manager_id == "" ||
-      car.garage == ""
+      car.garage_address == ""
     ) {
       setErr("빈칸을 모두 채워주세요");
     } else {
@@ -50,8 +51,12 @@ const CarRegister = () => {
   }, []);
 
   useEffect(() => {
-    setCar({ ...car, manager_number: String(managers[0]?.num) });
+    setCar({ ...car, netsmanager_number: String(managers[0]?.number) });
   }, [managers]);
+
+  useEffect(() => {
+    if (car.garage_address != "") GeoCoder(car.garage_address, setCar);
+  }, [car.garage_address]);
 
   return (
     <Layout>
@@ -80,27 +85,30 @@ const CarRegister = () => {
             </div>
           </div>
         )}
-
-        <InputBox
+        <input
+          type="text"
           name={"number"}
           placeholder={"차량번호"}
           onChange={(e) => ChangeObject(setCar, "number", e)}
+          className={"inputboxstyle"}
         />
-        <InputBox
+        <input
+          type="text"
           name={"type"}
           placeholder={"차종"}
           onChange={(e) => ChangeObject(setCar, "type", e)}
+          className={"inputboxstyle"}
         />
 
         <select
           className={styles.selectBox}
-          onChange={(e) => ChangeObject(setCar, "manager_number", e)}
+          onChange={(e) => ChangeObject(setCar, "netsmanager_number", e)}
         >
           {managers.map((data, i) => {
             return (
               <option
                 key={i}
-                value={data.num}
+                value={data.number}
               >{`${data.name} (${data.id})`}</option>
             );
           })}
@@ -108,7 +116,7 @@ const CarRegister = () => {
 
         <div onClick={() => setOpen(true)} className={styles.addrInput}>
           <span className={[typoStyles.fs32, typoStyles.fw400].join(" ")}>
-            {car.garage == "" ? "차고지 주소" : car.garage}
+            {car.garage_address == "" ? "차고지 주소" : car.garage_address}
           </span>
         </div>
 

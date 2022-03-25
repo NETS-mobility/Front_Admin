@@ -1,28 +1,10 @@
 .manageContentSection {
   width: 95%;
   height: 90%;
+  overflow-y: scroll;
   background-color: #fff;
   padding: 30px 50px;
   margin: 0 auto;
-}
-
-.serviceHistorySection {
-  display: flex;
-  flex-direction: column;
-  width: 95%;
-  height: 480px;
-  background-color: #f7f7f7;
-  overflow-y: scroll;
-  margin: 0 auto;
-}
-
-.memberInfoSection {
-  display: flex;
-  flex-direction: column;
-  width: 95%;
-  background-color: #fff;
-  margin: 0 auto 60px;
-  padding: 25px 30px;
 }
 
 .adminProfileContent {
@@ -30,4 +12,11 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 50px;
+}
+
+.managementBtn {
+  display: flex;
+  width: 343px;
+  height: 79px;
+  margin: 0 auto;
 }

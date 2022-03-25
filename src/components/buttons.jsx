@@ -2,11 +2,21 @@ import React from "react";
 import btnStyles from "./buttons.module.css";
 import typoStyles from "../assets/fonts/typography.module.css";
 
-const CustomBtn = ({ styleForBtn, styleForText, text, onClick, disabled }) => {
+const CustomBtn = ({
+  styleForBtn,
+  disableStyleForBtn,
+  styleForText,
+  text,
+  onClick,
+  disabled,
+}) => {
   return (
     <button
       type="button"
-      className={[btnStyles.btnCommon, styleForBtn].join(" ")}
+      className={[
+        btnStyles.btnCommon,
+        disabled ? disableStyleForBtn : styleForBtn,
+      ].join(" ")}
       onClick={onClick}
       disabled={disabled}
     >
