@@ -12,7 +12,7 @@ const DaumPost = ({ setValue, setOpen }) => {
           extraAddress !== "" ? `, ${data.buildingName}` : data.buildingName;
       }
       fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
-      setValue((prev) => ({ ...prev, garage: fullAddress }));
+      setValue((prev) => ({ ...prev, garage_address: fullAddress }));
       setOpen(false);
     }
   };

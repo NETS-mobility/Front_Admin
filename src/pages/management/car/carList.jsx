@@ -2,7 +2,7 @@ import CustomBtn from "../../../components/buttons";
 import Layout from "../../../layout/layout";
 import btnStyles from "../../../components/buttons.module.css";
 import typoStyles from "../../../assets/fonts/typography.module.css";
-import styles from "../management.module.css";
+import styles from "./car.module.css";
 import NewTableList from "../../../components/newTableList";
 import { useEffect, useState } from "react";
 import { GetCarList } from "../../../api/management/car";
