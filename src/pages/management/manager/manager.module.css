@@ -3,6 +3,12 @@
   margin: 0 auto 10px;
 }
 
+.editSmallTitle {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
 .managerRegisterContent,
 .managerRegisterComplete {
   display: flex;
@@ -37,4 +43,104 @@
   width: 400px;
   height: 100px;
   margin: 80px auto 0;
+}
+
+.editBtn {
+  width: 122px;
+  height: 44px;
+  margin-bottom: 0px;
+}
+
+.oneLineBlock {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  margin: 0 auto 50px;
+}
+
+.oneLineBlock .withTitle {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+.smallTitle {
+  margin-bottom: 36px;
+}
+
+.available {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  height: 137px;
+  background-color: #fff;
+  margin: 0 auto 50px;
+}
+
+.managerCommonBlockSection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 460px;
+  overflow-y: scroll;
+}
+
+.holidayTitle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  width: 95%;
+  margin: 0 auto 10px;
+}
+
+.managementBtn {
+  display: flex;
+  width: 343px;
+  height: 79px;
+  margin: 0 auto;
+}
+
+.btnSection {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 10px;
+  padding: 0 80px;
+}
+
+.managerDetailPage {
+  display: flex;
+  flex-direction: column;
+}
+
+.availableEdit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+  height: 137px;
+  background-color: #fff;
+  margin: 0 auto 50px;
+  padding: 10px 160px;
+}
+
+.availableEditOne {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.availableEditOne input {
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+}
+
+.errMsg {
+  display: flex;
+  justify-content: center;
 }

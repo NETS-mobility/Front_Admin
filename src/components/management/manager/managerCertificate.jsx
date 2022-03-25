@@ -1,33 +1,59 @@
 import ManagerCommonBlock from "./managerCommonBlock";
-const ManagerCertificate = ({ type }) => {
-  return (
-    <>
-      <ManagerCommonBlock
-        title={"간호조무사"}
-        content1={"취득일: 2021.12.12"}
-        content2={"만료일: 2026.12.12"}
-        type={type}
-      />
-      <ManagerCommonBlock
-        title={"간호조무사"}
-        content1={"취득일: 2021.12.12"}
-        content2={"만료일: 2026.12.12"}
-        type={type}
-      />
-      <ManagerCommonBlock
-        title={"간호조무사"}
-        content1={"취득일: 2021.12.12"}
-        content2={"만료일: 2026.12.12"}
-        type={type}
-      />
-      <ManagerCommonBlock
-        title={"간호조무사"}
-        content1={"취득일: 2021.12.12"}
-        content2={"만료일: 2026.12.12"}
-        type={type}
-      />
-    </>
-  );
+import styles from "./manager.module.css";
+import typoStyles from "../../../assets/fonts/typography.module.css";
+import CheckEmptyArr from "../../../util/checkEmptyArr";
+const ManagerCertificate = ({
+  cert,
+  userNum,
+  setDeletedCert,
+  setCert,
+  setShow,
+}) => {
+  if (CheckEmptyArr(cert)) {
+    return (
+      <div className={styles.noData}>
+        <h1
+          className={[
+            typoStyles.textExplain,
+            typoStyles.fw400,
+            typoStyles.fs36,
+          ].join(" ")}
+        >
+          등록된 자격증이 없습니다.
+        </h1>
+      </div>
+    );
+  } else {
+    return (
+      cert != undefined &&
+      cert?.map((data, i) => {
+        console.log("testDat==", data);
+        if (data.constructor === Object && Object.keys(data).length === 0) {
+          return (
+            <ManagerCommonBlock
+              managerNum={userNum}
+              key={i}
+              type={"register-certificate"}
+              chosen={i}
+              setRegister={setCert}
+              setShow={setShow}
+            />
+          );
+        } else {
+          return (
+            <ManagerCommonBlock
+              key={i}
+              title={data?.name}
+              content1={`취득일: ${data?.obtention?.substring(0, 10)}`}
+              content2={`만료일: ${data?.expiration?.substring(0, 10)}`}
+              certNum={data?.number}
+              chosen={setDeletedCert}
+            />
+          );
+        }
+      })
+    );
+  }
 };
 
 export default ManagerCertificate;
