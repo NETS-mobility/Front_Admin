@@ -72,23 +72,13 @@ const ManagerRegister = () => {
           onChange={(e) => ChangeObject(setManager, "name", e)}
           className={"inputboxstyle"}
         />
-        <div>
-          <input
-            type="text"
-            name={"id"}
-            placeholder={"아이디(이메일)"}
-            onChange={(e) => ChangeObject(setManager, "id", e)}
-            className={"inputboxstyle"}
-          />
-          <CustomBtn
-            styleForBtn={[btnStyles.btnDarkGrey, styles.registerBtn].join(" ")}
-            styleForText={typoStyles.fs36}
-            text={"중복확인"}
-            onClick={() => {
-              err === "" && RegisterManager(manager);
-            }}
-          />
-        </div>
+        <input
+          type="text"
+          name={"id"}
+          placeholder={"아이디(이메일)"}
+          onChange={(e) => ChangeObject(setManager, "id", e)}
+          className={"inputboxstyle"}
+        />
         <input
           type="password"
           name={"password"}
