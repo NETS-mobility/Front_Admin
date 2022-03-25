@@ -58,7 +58,7 @@ const App = () => {
         <Route path="/" element={<ManagerList />} />
 
         <Route path="/manage/member/list" element={<MemberList />} />
-        <Route path="/member/detail/:id" element={<MemberDetail />} />
+        <Route path="/member/detail/:number" element={<MemberDetail />} />
 
         <Route path="/manage/manager/register" element={<ManagerRegister />} />
         <Route
@@ -66,9 +66,9 @@ const App = () => {
           element={<ManagerRegisterComplete />}
         />
         <Route path="/manage/manager/list" element={<ManagerList />} />
-        <Route path="/manager/detail/:id" element={<ManagerDetail />} />
+        <Route path="/manager/detail/:number" element={<ManagerDetail />} />
         <Route
-          path="/manager/detail/edit/:id"
+          path="/manager/detail/:number/edit"
           element={<ManagerDetailEdit />}
         />
 
