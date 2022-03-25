@@ -62,7 +62,7 @@ const ManagerDetailEdit = () => {
       id: detail?.manager?.id,
       phone: detail?.manager?.phone,
       birth: detail?.manager?.birth,
-      available: detail?.manager?.available,
+      available: detail?.manager?.available == 0 ? false : true,
       path_pic: detail?.manager?.path_pic,
       date: detail?.manager?.date,
     });
@@ -77,7 +77,6 @@ const ManagerDetailEdit = () => {
   }, [deletedCert]);
 
   useEffect(() => {
-    console.log("managerInfo", managerInfo);
     if (!EmailValidation(managerInfo.id)) {
       setErr("이메일 형식이 올바르지 않습니다.");
     } else if (!PhoneValidation(managerInfo.phone)) {
@@ -144,8 +143,9 @@ const ManagerDetailEdit = () => {
               type="radio"
               name="available"
               id="yes"
-              defaultChecked={managerInfo.available}
-              onChange={() => setManagerInfo({ ...managerInfo, available: 1 })}
+              onChange={() =>
+                setManagerInfo({ ...managerInfo, available: true })
+              }
             />
             <label htmlFor="yes">배차 가능</label>
           </div>
@@ -154,8 +154,9 @@ const ManagerDetailEdit = () => {
               type="radio"
               name="available"
               id="no"
-              defaultChecked={!managerInfo.available}
-              onChange={() => setManagerInfo({ ...managerInfo, available: 0 })}
+              onChange={() =>
+                setManagerInfo({ ...managerInfo, available: false })
+              }
             />
             <label htmlFor="no">배차 불가능</label>
           </div>
