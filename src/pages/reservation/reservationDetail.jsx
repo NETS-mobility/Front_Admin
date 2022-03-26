@@ -68,7 +68,7 @@ const ReservationDetail = () => {
       service_id: res.service.service_id,
       service_type: res.service.service_type,
       service_state: res.service_state,
-      service_time: res.service_time,
+      service_time: res.service_state_time,
     });
   }, []);
   return (
