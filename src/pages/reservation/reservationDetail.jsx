@@ -68,7 +68,7 @@ const ReservationDetail = () => {
       service_id: res.service.service_id,
       service_type: res.service.service_type,
       service_state: res.service_state,
-      service_time: res.service_time,
+      service_time: res.service_state_time,
     });
   }, []);
   return (
@@ -115,7 +115,7 @@ const ReservationDetail = () => {
             state={detail?.service_state}
             time={detail?.service_time}
           />
-          <ReservationProgressEdit id={param.id} />
+          <ReservationProgressEdit id={param.id} rev_date={detail?.rev_date} />
         </section>
       </div>
     </Layout>

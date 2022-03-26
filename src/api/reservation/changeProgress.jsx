@@ -7,7 +7,12 @@ import axios from "axios";
 //     ]
 //   }
 
-const ChangeProgress = async (id, state, time) => {
+const ChangeProgress = async (id, date, state, time) => {
+  time.map((data, i) => {
+    if (time[i] != null) {
+      time[i] = `${date} ${data}`;
+    }
+  });
   try {
     const res = await axios.post(
       `/admin/service/serviceDetail/${id}/changeProg`,

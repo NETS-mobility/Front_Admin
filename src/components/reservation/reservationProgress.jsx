@@ -38,6 +38,9 @@ const ProgressCircle = ({
 };
 
 const ReservationProgress = ({ state, time }) => {
+  useEffect(() => {
+    console.log("변하는 state", state, "변하는 time", time);
+  }, [state, time]);
   return (
     <div className={styles.progressAll}>
       <span className={styles.progressTitle}>서비스 진행 상황</span>
@@ -67,37 +70,37 @@ const ReservationProgress = ({ state, time }) => {
         />
         <ProgressCircle
           isedit={false}
-          time={time ? time?.[1]?.substring(0, 5) : " "}
+          time={time[1] != null ? time?.[1]?.substring(11, 16) : " "}
           text={"픽업완료"}
           circleFill={state > 0}
         />
         <ProgressCircle
           isedit={false}
-          time={time ? time?.[2]?.substring(0, 5) : " "}
+          time={time[2] != null ? time?.[2]?.substring(0, 5) : " "}
           text={"병원도착"}
           circleFill={state > 1}
         />
         <ProgressCircle
           isedit={false}
-          time={time ? time?.[3]?.substring(0, 5) : " "}
+          time={time[3] != null ? time?.[3]?.substring(0, 5) : " "}
           text={"귀가차량\n병원도착"}
           circleFill={state > 2}
         />
         <ProgressCircle
           isedit={false}
-          time={time ? time?.[4]?.substring(0, 5) : " "}
+          time={time[4] != null ? time?.[4]?.substring(0, 5) : " "}
           text={"귀가출발"}
           circleFill={state > 3}
         />
         <ProgressCircle
           isedit={false}
-          time={time ? time?.[5]?.substring(0, 5) : " "}
+          time={time[5] != null ? time?.[5]?.substring(0, 5) : " "}
           text={"서비스종료"}
           circleFill={state > 4}
         />
         <ProgressCircle
           isedit={false}
-          time={time ? time?.[6]?.substring(0, 5) : " "}
+          time={time[6] != null ? time?.[6]?.substring(0, 5) : " "}
           text={"추가요금\n결제완료"}
           circleFill={state > 5}
         />
@@ -106,9 +109,9 @@ const ReservationProgress = ({ state, time }) => {
   );
 };
 
-const ReservationProgressEdit = ({ id }) => {
+const ReservationProgressEdit = ({ id, rev_date }) => {
   const [state, setState] = useState(0);
-  const [time, setTime] = useState(["", "", "", "", "", "", ""]);
+  const [time, setTime] = useState([null, null, null, null, null, null, null]);
   useEffect(() => {
     console.log("time 변경", time);
   }, [time]);
@@ -216,7 +219,7 @@ const ReservationProgressEdit = ({ id }) => {
         <button
           className={styles.progressChangeBtn}
           onClick={async () => {
-            const res = await ChangeProgress(id, state, time);
+            const res = await ChangeProgress(id, rev_date, state, time);
             if (res.status == 200) {
               alert("진행 상태 변경이 완료되었습니다.");
               window.location.reload();

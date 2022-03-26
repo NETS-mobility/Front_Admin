@@ -33,11 +33,12 @@
 
 .progressTimeInput {
   border: 0px;
-  border-bottom: 3px solid #737373;
-  width: 40%;
+  border-bottom: 3px solid #dad8e0;
+  width: 50%;
   font-size: 20px;
   font-weight: 700;
   outline: none;
+  text-align: center;
 }
 
 .progressText {
