@@ -115,7 +115,7 @@ const ReservationDetail = () => {
             state={detail?.service_state}
             time={detail?.service_time}
           />
-          <ReservationProgressEdit id={param.id} />
+          <ReservationProgressEdit id={param.id} rev_date={detail?.rev_date} />
         </section>
       </div>
     </Layout>

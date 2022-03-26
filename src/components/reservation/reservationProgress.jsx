@@ -106,7 +106,7 @@ const ReservationProgress = ({ state, time }) => {
   );
 };
 
-const ReservationProgressEdit = ({ id }) => {
+const ReservationProgressEdit = ({ id, rev_date }) => {
   const [state, setState] = useState(0);
   const [time, setTime] = useState(["", "", "", "", "", "", ""]);
   useEffect(() => {
@@ -216,12 +216,13 @@ const ReservationProgressEdit = ({ id }) => {
         <button
           className={styles.progressChangeBtn}
           onClick={async () => {
-            const res = await ChangeProgress(id, state, time);
+            const res = await ChangeProgress(id, rev_date, state, time);
             if (res.status == 200) {
               alert("진행 상태 변경이 완료되었습니다.");
               window.location.reload();
             } else {
               alert("진행 상태 변경에 실패하였습니다.");
+              window.location.reload();
             }
           }}
         >
