@@ -8,13 +8,15 @@ import { ko } from "date-fns/esm/locale";
 const dateToString = (date) => {
   return (
     date.getFullYear() +
+    "-" +
     (date.getMonth() + 1).toString().padStart(2, "0") +
+    "-" +
     date.getDate().toString().padStart(2, "0")
   );
 };
 
 const CustomDatePicker = ({ selected, setSelected }) => {
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(null);
   // const [selected, setSelected] = useState("");
   const ExampleCustomInput = ({ value, onClick }) => {
     return (
@@ -26,7 +28,9 @@ const CustomDatePicker = ({ selected, setSelected }) => {
   };
 
   useEffect(() => {
-    setSelected(dateToString(startDate));
+    if (startDate != null) {
+      setSelected(dateToString(startDate));
+    }
   }, [startDate]);
 
   return (
