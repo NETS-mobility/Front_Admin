@@ -1,40 +1,65 @@
 import React from "react";
 import "./reservationInfo.css";
 
-const ReservationInfo = () => {
+const ReservationInfo = ({ data }) => {
   return (
     <section className="reservationinfo-all">
-      <section className="reservationinfo-left">
-        <div className="reservationinfo-text">이용자 성함 </div>
-        <div className="reservationinfo-text">운행 상태</div>
-        <div className="reservationinfo-text">서비스 번호 </div>
-        <div className="reservationinfo-text">서비스 유형 </div>
-        <div className="reservationinfo-text">차량 번호 </div>
-        <div className="reservationinfo-text">서비스 예정일 </div>
-        <div className="reservationinfo-text">픽업주소</div>
-        <div className="reservationinfo-text">픽업 예정시간</div>
-        <div className="reservationinfo-text">희망 병원 도착시간 </div>
-        <div className="reservationinfo-text">진료/검사 예약시간</div>
-        <div className="reservationinfo-text">귀가 출발시간</div>
-        <div className="reservationinfo-text">병원 주소</div>
-        <div className="reservationinfo-text">결제 수단</div>
-        <div className="reservationinfo-text">비용</div>
+      {/* <section className="reservationinfo-left"> */}
+      <section className="reservationinfo-oneline">
+        <span className="reservationinfo-title">서비스 번호</span>
+        <span className="reservationinfo-text">{data?.service_id}</span>
       </section>
-      <section className="reservationinfo-right">
-        <div className="reservationinfo-text">포하나 </div>
-        <div className="reservationinfo-text">운행 완료</div>
-        <div className="reservationinfo-text">123456789 </div>
-        <div className="reservationinfo-text">네츠 휠체어 플러스 </div>
-        <div className="reservationinfo-text">12가3456</div>
-        <div className="reservationinfo-text">2021.11.11</div>
-        <div className="reservationinfo-text">서울시 성북구 길음동 11-13</div>
-        <div className="reservationinfo-text">10:20</div>
-        <div className="reservationinfo-text">12:30</div>
-        <div className="reservationinfo-text">13:30</div>
-        <div className="reservationinfo-text">14:30</div>
-        <div className="reservationinfo-text">상계 백병원</div>
-        <div className="reservationinfo-text">무통장 입금</div>
-        <div className="reservationinfo-text">79,000원</div>
+      <section className="reservationinfo-oneline">
+        <span className="reservationinfo-title">서비스 유형</span>
+        <span className="reservationinfo-text">{data?.service_type}</span>
+      </section>
+      <section className="reservationinfo-oneline">
+        <span className="reservationinfo-title">이용자 성함</span>
+        <span className="reservationinfo-text">{data?.customer_name}</span>
+      </section>
+      <section className="reservationinfo-oneline">
+        <span className="reservationinfo-title">픽업 주소</span>
+        <span className="reservationinfo-text">{data?.pickup_address}</span>
+      </section>
+      <section className="reservationinfo-oneline">
+        <span className="reservationinfo-title">병원 주소</span>
+        <span className="reservationinfo-text">{data?.hos_address}</span>
+      </section>
+      <section className="reservationinfo-oneline">
+        <span className="reservationinfo-title">귀가 주소</span>
+        <span className="reservationinfo-text">{data?.drop_address}</span>
+      </section>
+      <section className="reservationinfo-oneline">
+        <span className="reservationinfo-title">차량 번호</span>
+        <span className="reservationinfo-text">{data?.car_number}</span>
+      </section>
+      <section className="reservationinfo-oneline">
+        <span className="reservationinfo-title">서비스 예정일</span>
+        <span className="reservationinfo-text">{data?.rev_date}</span>
+      </section>
+      <section className="reservationinfo-oneline">
+        <span className="reservationinfo-title">픽업 예정시간</span>
+        <span className="reservationinfo-text">{data?.pickup_time}</span>
+      </section>
+      <section className="reservationinfo-oneline">
+        <span className="reservationinfo-title">희망 병원 도착시간</span>
+        <span className="reservationinfo-text">{data?.hos_arrival_time}</span>
+      </section>
+      <section className="reservationinfo-oneline">
+        <span className="reservationinfo-title">진료/검사 예약시간</span>
+        <span className="reservationinfo-text">{data?.hos_care_time}</span>
+      </section>
+      <section className="reservationinfo-oneline">
+        <span className="reservationinfo-title">귀가 출발 시간</span>
+        <span className="reservationinfo-text">{data?.hos_depart_time}</span>
+      </section>
+      <section className="reservationinfo-oneline">
+        <span className="reservationinfo-title">결제 수단</span>
+        <span className="reservationinfo-text">{data?.payMethod}</span>
+      </section>
+      <section className="reservationinfo-oneline">
+        <span className="reservationinfo-title">비용</span>
+        <span className="reservationinfo-text">{data?.payCost}</span>
       </section>
     </section>
   );

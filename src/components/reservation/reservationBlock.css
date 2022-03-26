@@ -1,58 +1,62 @@
 .reservationblock-square {
-  width: 470px;
-  height: 369px;
+  width: 100%;
+  height: 150px;
   background: #ffffff;
+  padding: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 15px;
 }
 .reservationblock-set {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: space-between;
+  z-index: 5;
 }
 .reservationblock-contents {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 30px;
-}
-.reservationblock-profile {
-  width: 140px;
-  height: 140px;
-  background-color: #c4c4c4;
-  border-radius: 100px;
-  margin-bottom: 20px;
+  align-items: flex-start;
 }
 .reservationblock-name {
   font-size: 28px;
-  font-weight: 400;
+  font-weight: 700;
   color: #737373;
+  width: 50%;
+}
+.reservationblock-nameright {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .reservationblock-button {
   display: flex;
   width: 278px;
-  height: 57px;
-  background: #19b7cd;
+  height: 40px;
+  background: #ffffff;
+  border: 3px solid #19b7cd;
   border-radius: 30px;
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 400;
-  color: #ffffff;
-  border: 0px;
+  color: #19b7cd;
+  outline: none;
   align-items: center;
   justify-content: center;
+  align-self: flex-start;
+  margin-bottom: 15px;
 }
 .reservationblock-changebtn {
   display: flex;
-  width: 109px;
-  height: 32px;
+  width: 278px;
+  height: 40px;
   background: #19b7cd;
   border-radius: 30px;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 400;
   color: #ffffff;
   border: 0px;
   align-items: center;
   justify-content: center;
-  margin: 10px;
+  align-self: flex-start;
 }
 .reservationblock-nonebtn {
   display: flex;

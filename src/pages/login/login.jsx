@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import typoStyle from "../../assets/fonts/typography.module.css";
 import CustomBtn from "../../components/buttons";
-import btnStyles from "../../components/buttons.module.css";
 import Logo from "../../assets/logo.svg";
 import { InputBox } from "../../components/inputBox";
 import axios from "axios";
@@ -12,12 +11,6 @@ const Login = () => {
   const [id, setID] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (localStorage.getItem("accessToken")) {
-  //     navigate("/");
-  //   }
-  // }, []);
 
   const onClick = () => {
     axios
@@ -30,9 +23,6 @@ const Login = () => {
         if (accessToken) {
           navigate("/");
         }
-        // if (response.status == 200) {
-        //   navigate("/");
-        // }
       })
       .catch(function (error) {
         console.log("error: ", error);
