@@ -4,6 +4,7 @@ import styles from "./manager.module.css";
 import typoStyles from "../../../assets/fonts/typography.module.css";
 import EditLine from "../editLine";
 const ManagerProfile = ({ info, setInfo, type }) => {
+  console.log("info========", info);
   return (
     <section className={styles.managerProfileSection}>
       <div className={styles.managerInfo}>

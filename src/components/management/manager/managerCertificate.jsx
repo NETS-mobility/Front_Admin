@@ -8,6 +8,7 @@ const ManagerCertificate = ({
   setDeletedCert,
   setCert,
   setShow,
+  type,
 }) => {
   if (CheckEmptyArr(cert)) {
     return (
@@ -44,6 +45,7 @@ const ManagerCertificate = ({
             <ManagerCommonBlock
               key={i}
               title={data?.name}
+              type={type}
               content1={`취득일: ${data?.obtention?.substring(0, 10)}`}
               content2={`만료일: ${data?.expiration?.substring(0, 10)}`}
               certNum={data?.number}

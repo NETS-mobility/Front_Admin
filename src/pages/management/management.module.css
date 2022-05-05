@@ -7,13 +7,6 @@
   margin: 0 auto;
 }
 
-.adminProfileContent {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 50px;
-}
-
 .managementBtn {
   display: flex;
   width: 343px;

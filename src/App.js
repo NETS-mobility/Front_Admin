@@ -37,8 +37,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        {/* <Route path="/" exact={true} element={<Layout />} /> */}
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
         <Route path="/changePW" element={<ChangePW />} />
         <Route path="/reservation/list" element={<ReservationList />} />
         <Route path="/reservation/detail/:id" element={<ReservationDetail />} />
@@ -55,7 +54,6 @@ const App = () => {
         <Route path="/notice/manager/write" element={<ManagerNoticeWrite />} />
         <Route path="/serviceStat" element={<ServiceStat />} />
         <Route path="/manage/admin/register" element={<AdminRegister />} />
-        <Route path="/" element={<ManagerList />} />
 
         <Route path="/manage/member/list" element={<MemberList />} />
         <Route path="/member/detail/:number" element={<MemberDetail />} />
@@ -73,8 +71,7 @@ const App = () => {
         />
 
         <Route path="/manage/admin/list" element={<AdminList />} />
-        <Route path="/admin/detail/:id" element={<AdminDetail />} />
-        <Route path="/admin/detail/edit/:id" element={<AdminDetailEdit />} />
+        <Route path="/admin/detail/:number" element={<AdminDetail />} />
 
         <Route path="/manage/car/list" element={<CarList />} />
         <Route path="/manage/car/register" element={<CarRegister />} />
@@ -82,7 +79,6 @@ const App = () => {
 
         <Route path="/setFee" element={<CurrentPay />} />
         <Route path="/editFee" element={<EditPay />} />
-        <Route path="/admin/detail/edit/:id" element={<AdminDetailEdit />} />
       </Routes>
     </Router>
   );

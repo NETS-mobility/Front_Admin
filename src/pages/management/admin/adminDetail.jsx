@@ -1,23 +1,25 @@
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../../../layout/layout";
-import styles from "../management.module.css";
+import styles from "./admin.module.css";
 import typoStyles from "../../../assets/fonts/typography.module.css";
 import btnStyles from "../../../components/buttons.module.css";
 import CustomBtn from "../../../components/buttons";
 import AdminProfile from "../../../components/management/admin/adminProfile";
+import { DeleteAdmin, GetAdminDetail } from "../../../api/management/admin";
+import { useEffect, useState } from "react";
 
 const AdminDetail = () => {
   const param = useParams();
-  const id = param.id; //url에 query로 사용
+  const number = param.number; //url에 query로 사용
+  const [detail, setDetail] = useState([]);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const info = {
-    img: "profile.png",
-    name: "김하나",
-    registerDate: "2021.12.02",
-    email: "email22@email.com",
-    phone: "010-1111-1111",
-    birth: "1975.02.14",
-  };
+  useEffect(async () => {
+    const res = await GetAdminDetail(number);
+    setDetail(res);
+  }, []);
+
   return (
     <Layout>
       <h1
@@ -31,22 +33,21 @@ const AdminDetail = () => {
         관리자 조회
       </h1>
       <div className={styles.adminProfileContent}>
-        <AdminProfile info={info} />
+        <AdminProfile info={detail} />
       </div>
-      <section className={styles.btnSection}>
-        <CustomBtn
-          styleForBtn={[btnStyles.btnOrange, styles.managementBtn].join(" ")}
-          styleForText={typoStyles.fs36}
-          text={"관리자 삭제"}
-        />
-        <Link to="/admin/detail/edit/2">
-          <CustomBtn
-            styleForBtn={[btnStyles.btnOrange, styles.managementBtn].join(" ")}
-            styleForText={typoStyles.fs36}
-            text={"상세정보 수정"}
-          />
-        </Link>
-      </section>
+      <span className={styles.deleteError}>{"안녕"}</span>
+      <CustomBtn
+        styleForBtn={[btnStyles.btnOrange, styles.managementBtn].join(" ")}
+        styleForText={typoStyles.fs36}
+        text={"관리자 삭제"}
+        onClick={async () => {
+          const res = await DeleteAdmin(number);
+          if (res == 200) {
+            setError("");
+            navigate("/manage/admin/list");
+          } else setError("관리자 삭제에 실패했습니다.");
+        }}
+      />
     </Layout>
   );
 };

@@ -5,60 +5,44 @@ import CustomBtn from "../../components/buttons";
 import axios from "axios";
 import "./adminRegister.css";
 import { PhoneValidation, EmailValidation } from "../../util/validation";
+import { RegisterAdmin } from "../../api/management/admin";
+import { useNavigate } from "react-router-dom";
 
 const AdminRegister = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmpass, setConfirmpass] = useState("");
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [birth, setBirth] = useState("");
+  const [admin, setAdmin] = useState({
+    email: "",
+    pw: "",
+    pwConfirm: "",
+    name: "",
+    phone: "",
+    birth: "",
+  });
   const [error, setError] = useState("빈칸을 모두 채워주세요.");
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (email == "") {
+    if (admin.email == "") {
       setError("이메일을 입력해주세요.");
-    } else if (!EmailValidation(email)) {
+    } else if (!EmailValidation(admin.email)) {
       setError("이메일 형식이 올바르지 않습니다.ex)example@email.com");
-    } else if (password == "") {
+    } else if (admin.pw == "") {
       setError("비밀번호를 입력해주세요.");
-    } else if (confirmpass == "") {
+    } else if (admin.pwConfirm == "") {
       setError("비밀번호 확인을 입력해주세요.");
-    } else if (password != confirmpass) {
+    } else if (admin.pw != admin.pwConfirm) {
       setError("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
-    } else if (name == "") {
+    } else if (admin.name == "") {
       setError("이름을 입력해주세요.");
-    } else if (phone == "") {
+    } else if (admin.phone == "") {
       setError("휴대전화를 입력해주세요.");
-    } else if (!PhoneValidation(phone)) {
+    } else if (!PhoneValidation(admin.phone)) {
       setError("휴대전화 형식이 올바르지 않습니다.ex)010-0000-0000");
-    } else if (birth == "") {
+    } else if (admin.birth == "") {
       setError("생일을 입력해주세요.");
     } else {
       setError("");
     }
-  }, [email, password, confirmpass, name, phone, birth]);
-  const onClick = () => {
-    axios
-      .post("/admin/register/admin", {
-        id: email,
-        password: password,
-        name: name,
-        phone: phone,
-        birth: birth,
-      })
-      .then((response) => {
-        console.log("response: ", response);
-        // const accessToken = response.data.jwtToken;
-        // localStorage.setItem("accessToken", accessToken);
-        // if (accessToken) {
-        //   navigate("/");
-        // }
-      })
-      .catch(function (error) {
-        console.log("error: ", error);
-      });
-  };
+  }, [admin]);
 
   return (
     <Layout>
@@ -73,56 +57,73 @@ const AdminRegister = () => {
               name={"email"}
               placeholder={"이메일(example@email.com)"}
               title={"이메일"}
-              value={email}
-              setValue={setEmail}
+              value={admin.email}
+              setValue={(e) =>
+                setAdmin((prev) => ({ ...prev, email: e.target.value }))
+              }
             />
             <InputBoxWithTitle
               ispass={true}
-              name={"password"}
+              name={"pw"}
               placeholder={"비밀번호"}
               title={"비밀번호"}
-              value={password}
-              setValue={setPassword}
+              value={admin.pw}
+              setValue={(e) =>
+                setAdmin((prev) => ({ ...prev, pw: e.target.value }))
+              }
             />
             <InputBoxWithTitle
               ispass={true}
-              name={"confirmpassword"}
+              name={"pwConfirm"}
               placeholder={"비밀번호 확인"}
               title={"비밀번호 확인"}
-              value={confirmpass}
-              setValue={setConfirmpass}
+              value={admin.pwConfirm}
+              setValue={(e) =>
+                setAdmin((prev) => ({ ...prev, pwConfirm: e.target.value }))
+              }
             />
             <InputBoxWithTitle
               ispass={false}
               name={"name"}
               placeholder={"이름"}
               title={"이름"}
-              value={name}
-              setValue={setName}
+              value={admin.name}
+              setValue={(e) =>
+                setAdmin((prev) => ({ ...prev, name: e.target.value }))
+              }
             />
             <InputBoxWithTitle
               ispass={false}
               name={"phone"}
               placeholder={"휴대폰 번호(010-0000-0000)"}
               title={"휴대전화"}
-              value={phone}
-              setValue={setPhone}
+              value={admin.phone}
+              setValue={(e) =>
+                setAdmin((prev) => ({ ...prev, phone: e.target.value }))
+              }
             />
             <InputBoxWithTitle
               ispass={false}
-              name={"birthday"}
+              name={"birth"}
               placeholder={"생년월일(YYYYMMDD)"}
               title={"생년월일"}
-              value={birth}
-              setValue={setBirth}
+              value={admin.birth}
+              setValue={(e) =>
+                setAdmin((prev) => ({ ...prev, birth: e.target.value }))
+              }
             />
           </div>
           <div className="adminregister-error">{error}</div>
           <CustomBtn
             styleForBtn={"adminregister-btn"}
+            disableStyleForBtn={"adminregister-btn-disabled"}
             text={"관리자 등록"}
-            onClick={() => onClick()}
-            disabled={error == "" ? true : false} //disable 시켜야됨
+            onClick={async () => {
+              const res = RegisterAdmin(admin);
+              if (res.success) navigate("/manage/admin/list");
+              else setError("관리자 등록에 실패했습니다.");
+            }}
+            disabled={error != "" ? true : false} //disable 시켜야됨
           />
         </section>
       </section>
