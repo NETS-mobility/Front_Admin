@@ -17,29 +17,6 @@ import {
 } from "../../../api/management/manager";
 import { EmailValidation, PhoneValidation } from "../../../util/validation";
 
-const EditCertificate = () => {
-  return (
-    <section className={styles.editCertificateModal}>
-      <h1>자격증 등록</h1>
-      <strong>자격증 이름</strong>
-      <input type="text" placeholder="자격증 이름" />
-      <strong>자격증 취득일</strong>
-      <input type="text" placeholder="년" />
-      <input type="text" placeholder="월" />
-      <input type="text" placeholder="일" />
-      <strong>자격증 만료일</strong>
-      <input type="text" placeholder="년" />
-      <input type="text" placeholder="월" />
-      <input type="text" placeholder="일" />
-      <CustomBtn
-        styleForBtn={[btnStyles.btnBlue, styles.managementBtn].join(" ")}
-        styleForText={typoStyles.fs36}
-        text={"등록 완료"}
-      />
-    </section>
-  );
-};
-
 const ManagerDetailEdit = () => {
   const param = useParams();
   const [detail, setDetail] = useState("");
