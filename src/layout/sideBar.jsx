@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../assets/logo.svg";
 import typoStyles from "../assets/fonts/typography.module.css";
 import styles from "./sideBar.module.css";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const NavItem = ({ bigMenu, smallMenu, open, setOpen, i }) => {
@@ -42,7 +41,7 @@ const NavItem = ({ bigMenu, smallMenu, open, setOpen, i }) => {
   );
 };
 
-const SideBar = () => {
+const SideBar = ({ name }) => {
   const [open, setOpen] = useState(0);
   return (
     <div className={styles.sideBar}>
@@ -58,7 +57,7 @@ const SideBar = () => {
         ].join(" ")}
       >
         안녕하세요,
-        <br /> 김지수 님!
+        <br /> {name} 님!
       </strong>
       <NavItem
         bigMenu={"내 정보"}

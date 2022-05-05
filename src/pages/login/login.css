@@ -12,6 +12,10 @@
   height: 247px;
 }
 
+.loginErr {
+  margin-top: 50px;
+}
+
 .loginwelcom {
   display: flex;
   flex-direction: column;
@@ -34,5 +38,5 @@
   background: #737373;
   font-size: 48px;
   font-weight: 200;
-  margin-top: 65px;
+  margin-top: 30px;
 }
