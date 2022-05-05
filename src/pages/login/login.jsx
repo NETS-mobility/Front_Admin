@@ -1,43 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import typoStyle from "../../assets/fonts/typography.module.css";
 import CustomBtn from "../../components/buttons";
-import btnStyles from "../../components/buttons.module.css";
 import Logo from "../../assets/logo.svg";
 import { InputBox } from "../../components/inputBox";
-import axios from "axios";
 import "./login.css";
+import { LoginAPI } from "../../api/auth/login";
 
 const Login = () => {
   const [id, setID] = useState("");
   const [password, setPassword] = useState("");
+  const [err, setErr] = useState("");
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("accessToken")) {
-  //     navigate("/");
-  //   }
-  // }, []);
-
-  const onClick = () => {
-    axios
-      .post("/admin/login", { id: id, password: password })
-      .then((response) => {
-        console.log("response: ", response);
-        const accessToken = response.data.token;
-        localStorage.setItem("accessToken", accessToken);
-        // window.location.reload();
-        if (accessToken) {
-          navigate("/");
-        }
-        // if (response.status == 200) {
-        //   navigate("/");
-        // }
-      })
-      .catch(function (error) {
-        console.log("error: ", error);
-      });
-  };
   return (
     <div>
       <div className="logintop">
@@ -78,10 +53,29 @@ const Login = () => {
           value={password}
           setValue={setPassword}
         />
+        <span
+          className={[
+            typoStyle.fs28,
+            typoStyle.fw400,
+            typoStyle.textPrimary,
+            "loginErr",
+          ].join(" ")}
+        >
+          {err}
+        </span>
         <CustomBtn
           styleForBtn={"login-enterbtn"}
           text={"로그인"}
-          onClick={() => onClick()}
+          onClick={async () => {
+            const res = await LoginAPI(id, password);
+            if (res.status == 200) {
+              setErr("");
+              localStorage.setItem("accessToken", res.data.token);
+              navigate("/reservation/list");
+            } else {
+              setErr("아이디나 비밀번호가 일치하지 않습니다.");
+            }
+          }}
         />
       </section>
     </div>
