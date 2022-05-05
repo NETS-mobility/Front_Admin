@@ -1,6 +1,13 @@
 import styles from "./serviceHistoryBlock.module.css";
 import typoStyles from "../../../assets/fonts/typography.module.css";
 const ServiceHistoryBlock = ({ data }) => {
+  let managerInfo;
+  if (data.netsmanager.length == 2) {
+    managerInfo = `${data.netsmanager[0]?.name} 매니저, ${data.netsmanager[1]?.name} 매니저`;
+  } else if (data.netsmanager.length == 1) {
+    managerInfo = `${data.netsmanager[0]?.name} 매니저`;
+  }
+
   return (
     <section className={styles.serviceHistoryBlock}>
       <div className={styles.serviceDate}>
@@ -34,7 +41,7 @@ const ServiceHistoryBlock = ({ data }) => {
             typoStyles.textExplain,
           ].join(" ")}
         >
-          김혜인 매니저
+          {managerInfo}
         </h1>
         <strong
           className={[

@@ -59,7 +59,6 @@ const MemberDetail = () => {
         이용내역 조회
       </h1>
       <section className={styles.serviceHistorySection}>
-        {/* ==================== 매니저 이름 바꿔야 함 ====================*/}
         {member?.rev?.map((data, i) => {
           return <ServiceHistoryBlock data={data} key={i} />;
         })}
