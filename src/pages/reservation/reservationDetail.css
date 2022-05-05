@@ -36,22 +36,26 @@
   display: flex;
   align-items: center;
   width: 95%;
-  height: 453px;
+  height: 460px;
+  padding: 30px;
   background-color: white;
+  justify-content: space-between;
 }
 .reservationdetail-line {
   height: 400px;
   background-color: black;
   width: 1px;
 }
-.reservationdetail-bottom1 {
+.reservationdetail-bottom {
   display: flex;
+  flex-direction: column;
   width: 95%;
-  justify-content: space-between;
   margin-top: 28px;
 }
-.reservationdetail-bottom2 {
+.reservationdetail-member {
   display: flex;
-  width: 95%;
-  margin-top: 28px;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  overflow-y: auto;
 }
