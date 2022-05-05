@@ -29,6 +29,15 @@
 .adminregister-btn {
   width: 465px;
   height: 80px;
+  background-color: #19b7cd;
+  border: 0px;
+  border-radius: 30px;
+  font-size: 40px;
+  color: #ffffff;
+}
+.adminregister-btn-disabled {
+  width: 465px;
+  height: 80px;
   background-color: #737373;
   border: 0px;
   border-radius: 30px;
