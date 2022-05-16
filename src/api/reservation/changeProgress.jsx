@@ -10,9 +10,13 @@ import axios from "axios";
 const ChangeProgress = async (id, date, state, time) => {
   Object.entries(time).forEach(([key, value]) => {
     if (value != null) {
-      value = `${date} ${value}:00`;
-      console.log(value);
-      time[key] = value;
+      if (value.length === 5) {
+        value = `${date} ${value}:00`;
+        console.log(value);
+        time[key] = value;
+      } else {
+        time[key] = null;
+      }
     }
   });
   try {
