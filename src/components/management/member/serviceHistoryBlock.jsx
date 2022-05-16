@@ -1,15 +1,20 @@
 import styles from "./serviceHistoryBlock.module.css";
 import typoStyles from "../../../assets/fonts/typography.module.css";
+import { useNavigate } from "react-router-dom";
+
 const ServiceHistoryBlock = ({ data }) => {
+  const navigate = useNavigate();
   let managerInfo;
   if (data.netsmanager.length == 2) {
     managerInfo = `${data.netsmanager[0]?.name} 매니저, ${data.netsmanager[1]?.name} 매니저`;
   } else if (data.netsmanager.length == 1) {
     managerInfo = `${data.netsmanager[0]?.name} 매니저`;
   }
-
   return (
-    <section className={styles.serviceHistoryBlock}>
+    <section
+      className={styles.serviceHistoryBlock}
+      onClick={() => navigate(`/reservation/detail/${data?.service_id}`)}
+    >
       <div className={styles.serviceDate}>
         <strong
           className={[
