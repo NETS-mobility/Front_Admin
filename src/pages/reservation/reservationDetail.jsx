@@ -84,10 +84,10 @@ const ReservationDetail = () => {
       <div className="reservationdetail-all">
         <section className="reservationdetail-top">
           <div className="reservationdetail-title">운행정보 확인</div>
-          <label className="reservationdetail-editset">
+          {/* <label className="reservationdetail-editset">
             <img src={EditImg} width="36" height="36" alt="edit" />
-            <div className="reservationdetail-edittext">상세정보 수정</div>
-          </label>
+          <div className="reservationdetail-edittext">상세정보 수정</div>
+          </label> */}
         </section>
         <section className="reservationdetail-mid">
           {/* <div className="reservationdetail-map">
@@ -120,7 +120,7 @@ const ReservationDetail = () => {
                 name={`${detail?.customer_name} 고객님`}
                 url={"/member/detail"}
                 num={detail?.customer_number}
-                btnName={"요청 사항 상세보기"}
+                btnName={"고객 상세보기"}
               />
             </div>
           </div>
