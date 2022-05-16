@@ -5,11 +5,14 @@ import EditImg from "../../assets/info-editing.png";
 import { ReservationInfo } from "../../components/reservation/reservationInfo";
 import { ReservationBlock } from "../../components/reservation/reservationBlock";
 import {
-  ReservationProgress,
-  ReservationProgressEdit,
+  ReservationProgressTwoway,
+  ReservationProgressTwowayEdit,
+  ReservationProgressTohos,
+  ReservationProgressTohosEdit,
 } from "../../components/reservation/reservationProgress";
 import { GetReservationDetail } from "../../api/reservation/getReservationDetail";
 import { useParams } from "react-router-dom";
+import initTmap from "../../components/reservation/tmap";
 
 const ReservationDetail = () => {
   const param = useParams();
@@ -41,6 +44,7 @@ const ReservationDetail = () => {
     service_time: [""],
   });
   useEffect(async () => {
+    //예약 정보 받아오기
     const res = await GetReservationDetail(param.id);
     console.log("data=", res);
     setDetail({
@@ -69,7 +73,11 @@ const ReservationDetail = () => {
       service_type: res.service.service_type,
       service_state: res.service_state,
       service_time: res.service_state_time,
+      isExistExtraPay: res.isExistExtraPay,
+      isNeedExtraPay: res.isNeedExtraPay,
+      complete_payment_date: res.complete_payment_date,
     });
+    initTmap(37.566481622437934, 126.98502302169841);
   }, []);
   return (
     <Layout>
@@ -82,6 +90,9 @@ const ReservationDetail = () => {
           </label>
         </section>
         <section className="reservationdetail-mid">
+          {/* <div className="reservationdetail-map">
+            <div id="map_div" className="reservationdetail-mapMap" />
+          </div> */}
           <div className="reservationdetail-information">
             <ReservationInfo data={detail} />
             <div className="reservationdetail-member">
@@ -95,11 +106,15 @@ const ReservationDetail = () => {
                 btnName={"매니저 상세보기"}
               />
               {/* 동행매니저 아직 변경 불가능해서 isbutton false로 해둠, true로 바꿔야함 */}
-              <ReservationBlock
-                isbutton={false}
-                name={`${detail?.gowithumanager} 동행매니저`}
-                btnName={"매니저 상세보기"}
-              />
+              {detail.gowithumanager != null ? (
+                <ReservationBlock
+                  isbutton={false}
+                  name={`${detail?.gowithumanager} 동행매니저`}
+                  btnName={"매니저 상세보기"}
+                />
+              ) : (
+                <></>
+              )}
               <ReservationBlock
                 isbutton={false}
                 name={`${detail?.customer_name} 고객님`}
@@ -111,11 +126,21 @@ const ReservationDetail = () => {
           </div>
         </section>
         <section className="reservationdetail-bottom">
-          <ReservationProgress
+          <ReservationProgressTwoway
             state={detail?.service_state}
             time={detail?.service_time}
+            dcase={detail?.dispatch_case}
+            isExist={detail?.isExistExtraPay}
+            isNeed={detail?.isNeedExtraPay}
+            payComp={detail?.complete_payment_date}
           />
-          <ReservationProgressEdit id={param.id} rev_date={detail?.rev_date} />
+          <ReservationProgressTwowayEdit
+            sstate={detail?.service_state}
+            id={param.id}
+            rev_date={detail?.rev_date}
+            dcase={detail?.dispatch_case}
+            ttime={detail?.service_time}
+          />
         </section>
       </div>
     </Layout>

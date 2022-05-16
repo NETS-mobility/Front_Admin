@@ -8,9 +8,11 @@ import axios from "axios";
 //   }
 
 const ChangeProgress = async (id, date, state, time) => {
-  time.map((data, i) => {
-    if (time[i] != null) {
-      time[i] = `${date} ${data}`;
+  Object.entries(time).forEach(([key, value]) => {
+    if (value != null) {
+      value = `${date} ${value}:00`;
+      console.log(value);
+      time[key] = value;
     }
   });
   try {
