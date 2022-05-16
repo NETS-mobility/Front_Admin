@@ -31,6 +31,7 @@
   width: 100%;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 .reservationdetail-information {
   display: flex;
@@ -58,4 +59,17 @@
   width: 50%;
   height: 100%;
   overflow-y: auto;
+}
+.reservationdetail-map {
+  display: flex;
+  width: 95%;
+  height: 10%;
+  background-color: #eef5fc;
+  justify-content: center;
+  align-items: center;
+}
+
+.reservationdetail-mapMap {
+  width: 95%;
+  height: 10%;
 }

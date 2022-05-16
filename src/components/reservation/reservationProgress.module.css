@@ -6,6 +6,14 @@
   z-index: 3;
 }
 
+.progressOnestepTohos {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  z-index: 3;
+}
+
 .progressCircleAct {
   width: 50px;
   height: 50px;
@@ -73,6 +81,17 @@
   background-color: #dad8e0;
   z-index: 1;
 }
+
+.progressGraybarTohos {
+  position: absolute;
+  /* left: 24.5%; */
+  bottom: 50%;
+  width: 80%;
+  height: 30px;
+  background-color: #dad8e0;
+  z-index: 1;
+}
+
 .progressBluebar0 {
   position: absolute;
   height: 30px;
@@ -87,11 +106,33 @@
   background-color: #19b7cd;
   z-index: 2;
 }
+.progressBluebar20 {
+  position: absolute;
+  height: 30px;
+  width: 20%;
+  background-color: #19b7cd;
+  z-index: 2;
+}
+
+.progressBluebar25 {
+  position: absolute;
+  height: 30px;
+  width: 25%;
+  background-color: #19b7cd;
+  z-index: 2;
+}
 
 .progressBluebar33 {
   position: absolute;
   height: 30px;
   width: 33%;
+  background-color: #19b7cd;
+  z-index: 2;
+}
+.progressBluebar40 {
+  position: absolute;
+  height: 30px;
+  width: 40%;
   background-color: #19b7cd;
   z-index: 2;
 }
@@ -102,10 +143,31 @@
   background-color: #19b7cd;
   z-index: 2;
 }
+.progressBluebar60 {
+  position: absolute;
+  height: 30px;
+  width: 60%;
+  background-color: #19b7cd;
+  z-index: 2;
+}
 .progressBluebar65 {
   position: absolute;
   height: 30px;
   width: 65%;
+  background-color: #19b7cd;
+  z-index: 2;
+}
+.progressBluebar75 {
+  position: absolute;
+  height: 30px;
+  width: 75%;
+  background-color: #19b7cd;
+  z-index: 2;
+}
+.progressBluebar80 {
+  position: absolute;
+  height: 30px;
+  width: 80%;
   background-color: #19b7cd;
   z-index: 2;
 }

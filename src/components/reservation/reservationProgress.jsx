@@ -12,12 +12,10 @@ const ProgressCircle = ({
   onClick,
 }) => {
   const changeValue = (e) => {
-    let newArr = [...time];
-    newArr[index] = e.target.value;
-    setTime(newArr);
+    setTime({ ...time, [index]: e.target.value });
   };
   return (
-    <section className={styles.progressOnestep}>
+    <section className={styles.progressOnestepTohos}>
       {isedit ? (
         <input
           className={styles.progressTimeInput}
@@ -37,7 +35,7 @@ const ProgressCircle = ({
   );
 };
 
-const ReservationProgress = ({ state, time }) => {
+const ReservationProgressTwoway = ({ state, time, dcase }) => {
   useEffect(() => {
     console.log("변하는 state", state, "변하는 time", time);
   }, [state, time]);
@@ -45,19 +43,49 @@ const ReservationProgress = ({ state, time }) => {
     <div className={styles.progressAll}>
       <span className={styles.progressTitle}>서비스 진행 상황</span>
       <section className={styles.progressSteps}>
-        <div className={styles.progressGraybar}>
-          {state > 5 ? (
+        <div
+          className={
+            dcase == 1 ? styles.progressGraybarTohos : styles.progressGraybar
+          }
+        >
+          {dcase == 3 ? (
+            state > 5 ? (
+              <div className={styles.progressBluebar100} />
+            ) : state > 4 ? (
+              <div className={styles.progressBluebar83} />
+            ) : state > 3 ? (
+              <div className={styles.progressBluebar65} />
+            ) : state > 2 ? (
+              <div className={styles.progressBluebar50} />
+            ) : state > 1 ? (
+              <div className={styles.progressBluebar33} />
+            ) : state > 0 ? (
+              <div className={styles.progressBluebar16} />
+            ) : (
+              <div className={styles.progressBluebar0} />
+            )
+          ) : dcase == 2 ? (
+            state > 6 ? (
+              <div className={styles.progressBluebar100} />
+            ) : state > 5 ? (
+              <div className={styles.progressBluebar80} />
+            ) : state > 4 ? (
+              <div className={styles.progressBluebar60} />
+            ) : state > 3 ? (
+              <div className={styles.progressBluebar40} />
+            ) : state > 0 ? (
+              <div className={styles.progressBluebar20} />
+            ) : (
+              <div className={styles.progressBluebar0} />
+            )
+          ) : state > 5 ? (
             <div className={styles.progressBluebar100} />
-          ) : state > 4 ? (
-            <div className={styles.progressBluebar83} />
-          ) : state > 3 ? (
-            <div className={styles.progressBluebar65} />
           ) : state > 2 ? (
-            <div className={styles.progressBluebar50} />
+            <div className={styles.progressBluebar75} />
           ) : state > 1 ? (
-            <div className={styles.progressBluebar33} />
+            <div className={styles.progressBluebar50} />
           ) : state > 0 ? (
-            <div className={styles.progressBluebar16} />
+            <div className={styles.progressBluebar25} />
           ) : (
             <div className={styles.progressBluebar0} />
           )}
@@ -70,72 +98,130 @@ const ReservationProgress = ({ state, time }) => {
         />
         <ProgressCircle
           isedit={false}
-          time={time[1] != null ? time?.[1]?.substring(11, 16) : " "}
-          text={"픽업완료"}
+          time={time.carDep != null ? time?.carDep?.substring(11, 16) : " "}
+          text={"차량출발"}
           circleFill={state > 0}
         />
-        <ProgressCircle
-          isedit={false}
-          time={time[2] != null ? time?.[2]?.substring(0, 5) : " "}
-          text={"병원도착"}
-          circleFill={state > 1}
-        />
-        <ProgressCircle
-          isedit={false}
-          time={time[3] != null ? time?.[3]?.substring(0, 5) : " "}
-          text={"귀가차량\n병원도착"}
-          circleFill={state > 2}
-        />
-        <ProgressCircle
-          isedit={false}
-          time={time[4] != null ? time?.[4]?.substring(0, 5) : " "}
-          text={"귀가출발"}
-          circleFill={state > 3}
-        />
-        <ProgressCircle
-          isedit={false}
-          time={time[5] != null ? time?.[5]?.substring(0, 5) : " "}
-          text={"서비스종료"}
-          circleFill={state > 4}
-        />
+        {dcase != 2 ? (
+          <>
+            <ProgressCircle
+              isedit={false}
+              time={time.pickup != null ? time?.pickup?.substring(11, 16) : " "}
+              text={"픽업완료"}
+              circleFill={state > 1}
+            />
+            <ProgressCircle
+              isedit={false}
+              time={
+                time.arrivalHos != null
+                  ? time?.arrivalHos?.substring(11, 16)
+                  : " "
+              }
+              text={"병원도착"}
+              circleFill={state > 2}
+            />
+          </>
+        ) : (
+          <></>
+        )}
+
+        {dcase != 1 ? (
+          <>
+            <ProgressCircle
+              isedit={false}
+              time={
+                time.carReady != null ? time?.carDep?.substring(11, 16) : " "
+              }
+              text={"귀가차량\n병원도착"}
+              circleFill={state > 3}
+            />
+            <ProgressCircle
+              isedit={false}
+              time={time.goHome != null ? time?.goHome?.substring(11, 16) : " "}
+              text={"귀가출발"}
+              circleFill={state > 4}
+            />
+            <ProgressCircle
+              isedit={false}
+              time={
+                time.complete != null ? time?.complete?.substring(11, 16) : " "
+              }
+              text={"서비스종료"}
+              circleFill={state > 5}
+            />
+          </>
+        ) : (
+          <></>
+        )}
         <ProgressCircle
           isedit={false}
           time={time[6] != null ? time?.[6]?.substring(0, 5) : " "}
           text={"추가요금\n결제완료"}
-          circleFill={state > 5}
+          circleFill={state > 6}
         />
       </section>
     </div>
   );
 };
 
-const ReservationProgressEdit = ({ id, rev_date }) => {
+const ReservationProgressTwowayEdit = ({ id, rev_date, dcase }) => {
   const [state, setState] = useState(0);
-  const [time, setTime] = useState([null, null, null, null, null, null, null]);
-  useEffect(() => {
-    console.log("time 변경", time);
-  }, [time]);
-  useEffect(() => {
-    console.log("state 변경", state);
-  }, [state]);
+  const [time, setTime] = useState({
+    pickup: "",
+    arrivalHos: "",
+    carDep: "",
+    carReady: "",
+    goHome: "",
+    complete: "",
+  });
   return (
     <div className={styles.progressEditAll}>
       <span className={styles.progressTitle}>서비스 진행 상황 변경</span>
       <div className={styles.progressContents}>
         <section className={styles.progressSteps}>
-          <div className={styles.progressGraybar}>
-            {state > 5 ? (
+          <div
+            className={
+              dcase == 1 ? styles.progressGraybarTohos : styles.progressGraybar
+            }
+          >
+            {dcase == 3 ? (
+              state > 5 ? (
+                <div className={styles.progressBluebar100} />
+              ) : state > 4 ? (
+                <div className={styles.progressBluebar83} />
+              ) : state > 3 ? (
+                <div className={styles.progressBluebar65} />
+              ) : state > 2 ? (
+                <div className={styles.progressBluebar50} />
+              ) : state > 1 ? (
+                <div className={styles.progressBluebar33} />
+              ) : state > 0 ? (
+                <div className={styles.progressBluebar16} />
+              ) : (
+                <div className={styles.progressBluebar0} />
+              )
+            ) : dcase == 2 ? (
+              state > 6 ? (
+                <div className={styles.progressBluebar100} />
+              ) : state > 5 ? (
+                <div className={styles.progressBluebar80} />
+              ) : state > 4 ? (
+                <div className={styles.progressBluebar60} />
+              ) : state > 3 ? (
+                <div className={styles.progressBluebar40} />
+              ) : state > 0 ? (
+                <div className={styles.progressBluebar20} />
+              ) : (
+                <div className={styles.progressBluebar0} />
+              )
+            ) : state > 5 ? (
               <div className={styles.progressBluebar100} />
-            ) : state > 4 ? (
-              <div className={styles.progressBluebar83} />
-            ) : state > 3 ? (
-              <div className={styles.progressBluebar65} />
             ) : state > 2 ? (
-              <div className={styles.progressBluebar50} />
+              <div className={styles.progressBluebar75} />
             ) : state > 1 ? (
-              <div className={styles.progressBluebar33} />
+              <div className={styles.progressBluebar50} />
             ) : state > 0 ? (
-              <div className={styles.progressBluebar16} />
+              <div className={styles.progressBluebar25} />
             ) : (
               <div className={styles.progressBluebar0} />
             )}
@@ -153,64 +239,87 @@ const ReservationProgressEdit = ({ id, rev_date }) => {
             isedit={true}
             time={time}
             setTime={setTime}
-            index={1}
-            text={"픽업완료"}
+            index={"carDep"}
+            text={"차량출발"}
             circleFill={state > 0}
             onClick={() => {
               setState(1);
             }}
           />
-          <ProgressCircle
-            isedit={true}
-            time={time}
-            setTime={setTime}
-            index={2}
-            text={"병원도착"}
-            circleFill={state > 1}
-            onClick={() => {
-              setState(2);
-            }}
-          />
-          <ProgressCircle
-            isedit={true}
-            time={time}
-            setTime={setTime}
-            index={3}
-            text={"귀가차량\n병원도착"}
-            circleFill={state > 2}
-            onClick={() => {
-              setState(3);
-            }}
-          />
-          <ProgressCircle
-            isedit={true}
-            time={time}
-            setTime={setTime}
-            index={4}
-            text={"귀가출발"}
-            circleFill={state > 3}
-            onClick={() => {
-              setState(4);
-            }}
-          />
-          <ProgressCircle
-            isedit={true}
-            time={time}
-            setTime={setTime}
-            index={5}
-            text={"서비스종료"}
-            circleFill={state > 4}
-            onClick={() => {
-              setState(5);
-            }}
-          />
+          {dcase != 2 ? (
+            <>
+              <ProgressCircle
+                isedit={true}
+                time={time}
+                setTime={setTime}
+                index={"pickup"}
+                text={"픽업완료"}
+                circleFill={state > 1}
+                onClick={() => {
+                  setState(2);
+                }}
+              />
+              <ProgressCircle
+                isedit={true}
+                time={time}
+                setTime={setTime}
+                index={"arrivalHos"}
+                text={"병원도착"}
+                circleFill={state > 2}
+                onClick={() => {
+                  setState(3);
+                }}
+              />
+            </>
+          ) : (
+            <></>
+          )}
+          {dcase != 1 ? (
+            <>
+              <ProgressCircle
+                isedit={true}
+                time={time}
+                setTime={setTime}
+                index={"carReady"}
+                text={"귀가차량\n병원도착"}
+                circleFill={state > 3}
+                onClick={() => {
+                  setState(4);
+                }}
+              />
+              <ProgressCircle
+                isedit={true}
+                time={time}
+                setTime={setTime}
+                index={"goHome"}
+                text={"귀가출발"}
+                circleFill={state > 4}
+                onClick={() => {
+                  setState(5);
+                }}
+              />
+              <ProgressCircle
+                isedit={true}
+                time={time}
+                setTime={setTime}
+                index={"complete"}
+                text={"서비스종료"}
+                circleFill={state > 5}
+                onClick={() => {
+                  setState(6);
+                }}
+              />
+            </>
+          ) : (
+            <></>
+          )}
           <ProgressCircle
             isedit={true}
             time={time}
             setTime={setTime}
             index={6}
             text={"추가요금\n결제완료"}
-            circleFill={state > 5}
+            circleFill={state > 6}
             onClick={() => {
               setState(6);
             }}
@@ -235,4 +344,4 @@ const ReservationProgressEdit = ({ id, rev_date }) => {
   );
 };
 
-export { ReservationProgress, ReservationProgressEdit };
+export { ReservationProgressTwoway, ReservationProgressTwowayEdit };

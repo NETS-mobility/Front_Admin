@@ -59,7 +59,11 @@ const ReservationInfo = ({ data }) => {
       </section>
       <section className="reservationinfo-oneline">
         <span className="reservationinfo-title">비용</span>
-        <span className="reservationinfo-text">{data?.payCost}</span>
+        <span className="reservationinfo-text">
+          {`${data?.payCost
+            ?.toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`}
+        </span>
       </section>
     </section>
   );

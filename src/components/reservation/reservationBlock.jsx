@@ -44,14 +44,11 @@ const ReservationBlock = ({
   useEffect(async () => {
     if (id != undefined) {
       const res = await GetChangeManagerList(id);
-      console.log("안녕나는 res", res);
       setList(res);
     }
   }, []);
 
-  useEffect(() => {
-    console.log("나는 list==", list);
-  }, [list]);
+  useEffect(() => {}, [list]);
   return (
     <div className="reservationblock-square">
       <div className="reservationblock-set">
