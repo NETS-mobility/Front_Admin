@@ -10,8 +10,8 @@ import CustomDatePicker from "../../components/customDatePicker";
 import { GetStatistics } from "../../api/statistics/getStatistics";
 
 const ServiceStat = () => {
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [startDate, setStartDate] = useState("2022-01-01");
+  const [endDate, setEndDate] = useState("2022-05-17");
   const [data, setData] = useState({
     cancel_count: 0,
     customer_new: 0,
@@ -64,38 +64,83 @@ const ServiceStat = () => {
           <div className="stat-boxline">
             <StatisticsBox
               title={"예약건수"}
-              contents={`${data.reservation_count}건`}
+              contents={
+                data.reservation_count != undefined
+                  ? `${data.reservation_count}건`
+                  : "0건"
+              }
             />
             <StatisticsBox
               title={"서비스건수"}
-              contents={`${data.service_count}건`}
+              contents={
+                data.service_count != undefined
+                  ? `${data.service_count}건`
+                  : "0건"
+              }
             />
             <StatisticsBox
               title={"취소건수"}
-              contents={`${data.cancel_count}건`}
+              contents={
+                data.cancel_count != undefined
+                  ? `${data.cancel_count}건`
+                  : "0건"
+              }
             />
           </div>
           <div className="stat-boxline">
-            <StatisticsLongBox title={"매출"} contents={`${data.sales}원`} />
+            <StatisticsLongBox
+              title={"매출"}
+              contents={
+                data.sales != undefined
+                  ? `${data.sales
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`
+                  : "0원"
+              }
+            />
             <StatisticsBox
               title={"신규 고객 수"}
-              contents={`${data.customer_new}명`}
+              contents={
+                data.customer_new != undefined
+                  ? `${data.customer_new}명`
+                  : "0명"
+              }
             />
           </div>
           <div className="stat-boxline">
             <StatisticsTwoContentsBox
               title={"이동 거리"}
-              contents1={`${data.total_distance.sum} km`}
-              contents2={`${data.total_distance.avg} km`}
+              contents1={
+                data.total_distance != undefined
+                  ? `${data.total_distance.sum} km`
+                  : "0 km"
+              }
+              contents2={
+                data.total_distance != undefined
+                  ? `${Number(data.total_distance.avg).toFixed(2)} km`
+                  : "0 km"
+              }
             />
             <StatisticsTwoContentsBox
               title={"이동 시간"}
-              contents1={`${data.total_time.sum} 시간`}
-              contents2={`${data.total_time.avg} 시간`}
+              contents1={
+                data.total_time != undefined
+                  ? `${data.total_time.sum} 시간`
+                  : "0 시간"
+              }
+              contents2={
+                data.total_time != undefined
+                  ? `${Number(data.total_time.avg).toFixed(2)} 시간`
+                  : "0 시간"
+              }
             />
             <StatisticsBox
               title={"평균 병원동행 시간"}
-              contents={`${data.gowith_time}시간`}
+              contents={
+                data.gowith_time != undefined
+                  ? `${Number(data.gowith_time).toFixed(2)}시간`
+                  : "0시간"
+              }
             />
           </div>
         </section>
