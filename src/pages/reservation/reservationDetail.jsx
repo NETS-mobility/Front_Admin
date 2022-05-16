@@ -73,6 +73,9 @@ const ReservationDetail = () => {
       service_type: res.service.service_type,
       service_state: res.service_state,
       service_time: res.service_state_time,
+      isExistExtraPay: res.isExistExtraPay,
+      isNeedExtraPay: res.isNeedExtraPay,
+      complete_payment_date: res.complete_payment_date,
     });
     initTmap(37.566481622437934, 126.98502302169841);
   }, []);
@@ -87,9 +90,9 @@ const ReservationDetail = () => {
           </label>
         </section>
         <section className="reservationdetail-mid">
-          <div className="reservationdetail-map">
+          {/* <div className="reservationdetail-map">
             <div id="map_div" className="reservationdetail-mapMap" />
-          </div>
+          </div> */}
           <div className="reservationdetail-information">
             <ReservationInfo data={detail} />
             <div className="reservationdetail-member">
@@ -127,11 +130,16 @@ const ReservationDetail = () => {
             state={detail?.service_state}
             time={detail?.service_time}
             dcase={detail?.dispatch_case}
+            isExist={detail?.isExistExtraPay}
+            isNeed={detail?.isNeedExtraPay}
+            payComp={detail?.complete_payment_date}
           />
           <ReservationProgressTwowayEdit
+            sstate={detail?.service_state}
             id={param.id}
             rev_date={detail?.rev_date}
             dcase={detail?.dispatch_case}
+            ttime={detail?.service_time}
           />
         </section>
       </div>

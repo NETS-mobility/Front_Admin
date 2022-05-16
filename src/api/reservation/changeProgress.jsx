@@ -8,6 +8,13 @@ import axios from "axios";
 //   }
 
 const ChangeProgress = async (id, date, state, time) => {
+  Object.entries(time).forEach(([key, value]) => {
+    if (value != null) {
+      value = `${date} ${value}:00`;
+      console.log(value);
+      time[key] = value;
+    }
+  });
   try {
     const res = await axios.post(
       `/admin/service/serviceDetail/${id}/changeProg`,

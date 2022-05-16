@@ -47,6 +47,7 @@
   font-weight: 700;
   outline: none;
   text-align: center;
+  color: #000;
 }
 
 .progressText {
@@ -99,6 +100,13 @@
   background-color: #19b7cd;
   z-index: 2;
 }
+.progressBluebar12 {
+  position: absolute;
+  height: 30px;
+  width: 12.5%;
+  background-color: #19b7cd;
+  z-index: 2;
+}
 .progressBluebar16 {
   position: absolute;
   height: 30px;
@@ -113,19 +121,24 @@
   background-color: #19b7cd;
   z-index: 2;
 }
-
 .progressBluebar25 {
   position: absolute;
   height: 30px;
-  width: 25%;
+  width: 28%;
   background-color: #19b7cd;
   z-index: 2;
 }
-
 .progressBluebar33 {
   position: absolute;
   height: 30px;
   width: 33%;
+  background-color: #19b7cd;
+  z-index: 2;
+}
+.progressBluebar37 {
+  position: absolute;
+  height: 30px;
+  width: 42%;
   background-color: #19b7cd;
   z-index: 2;
 }
@@ -136,10 +149,17 @@
   background-color: #19b7cd;
   z-index: 2;
 }
+.progressBluebar42 {
+  position: absolute;
+  height: 30px;
+  width: 42.8%;
+  background-color: #19b7cd;
+  z-index: 2;
+}
 .progressBluebar50 {
   position: absolute;
   height: 30px;
-  width: 50%;
+  width: 56%;
   background-color: #19b7cd;
   z-index: 2;
 }
@@ -147,6 +167,13 @@
   position: absolute;
   height: 30px;
   width: 60%;
+  background-color: #19b7cd;
+  z-index: 2;
+}
+.progressBluebar62 {
+  position: absolute;
+  height: 30px;
+  width: 71%;
   background-color: #19b7cd;
   z-index: 2;
 }
@@ -160,7 +187,7 @@
 .progressBluebar75 {
   position: absolute;
   height: 30px;
-  width: 75%;
+  width: 86%;
   background-color: #19b7cd;
   z-index: 2;
 }
@@ -175,6 +202,13 @@
   position: absolute;
   height: 30px;
   width: 83%;
+  background-color: #19b7cd;
+  z-index: 2;
+}
+.progressBluebar87 {
+  position: absolute;
+  height: 30px;
+  width: 87.5%;
   background-color: #19b7cd;
   z-index: 2;
 }
